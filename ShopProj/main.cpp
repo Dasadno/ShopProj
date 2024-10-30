@@ -8,15 +8,22 @@
 #undef max
 #endif
 
-
+//functios
 std::pair <std::string, std::string> logining_pass();
 void ShopAdminMenu();
 void ShopUserMenu();
 bool login();
 void start();
 
+//here shop db
+int typesize = 10;
+int* idArr = new int[typesize];
+int* countArr = new int[typesize];
+double* priceArr = new double[typesize];
+std::string* nameArr = new std::string[typesize];
 
 
+// -----------------------------------------------
 bool isAdmin = false;
 int userCount = 2;
 
@@ -104,14 +111,15 @@ void ShopAdminMenu()
 			std::cout << "2. Показать склад \n";
 			std::cout << "3. Списать со склада\n";
 			std::cout << "4. Отчет о прибыли\n";
+			std::cout << "5. Пополнить склад\n";
 			std::cout << "0. Закрыть смену \n";
 
 			std::cout << "Ввод: ";
 			std::getline(std::cin, choose, '\n');
 			system("cls");
 
-		} while (choose.size() > 1 || choose[0] < 48 || choose[0] > 56);
-		if (choose == "1")
+		} while (choose.size() > 1 || choose[0] < 48 || choose[0] > 53);
+		if (choose == "0")
 		{
 
 		}
@@ -130,6 +138,14 @@ void ShopAdminMenu()
 		else if (choose == "4")
 		{
 
+		}
+		else if (choose == "5")
+		{
+
+		}
+		else
+		{
+			std::cerr << "UserMenuError";
 		}
 	}
 }
