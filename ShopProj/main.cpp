@@ -21,6 +21,7 @@ int* idArr = new int[typesize];
 int* countArr = new int[typesize];
 double* priceArr = new double[typesize];
 std::string* nameArr = new std::string[typesize];
+// need to think about things, that i need to sale
 // -----------------------------------------------
 bool isAdmin = false;
 int userCount = 2;
