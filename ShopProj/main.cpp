@@ -42,67 +42,7 @@ void ShopUserMenu()
 	std::string choose;
 	while (true)
 	{
-		do
-		{
-			std::cout << "1. Начать продажу \n";
-			std::cout << "2. Показать склад \n";
-			std::cout << "3. Пополнить склад \n";
-			std::cout << "4. Списать со склада\n";
-			std::cout << "5. Изменить цену \n";
-			std::cout << "6. Изменить склад.";
-			std::cout << "7. Изменить персонал\n";
-			std::cout << "8. Отчет о прибыли\n";
-			std::cout << "0. Закрыть смену \n";
 
-			std::cout << "Ввод: ";
-			std::getline(std::cin, choose, '\n');
-			system("cls");
-
-		} while (choose.size() > 1 || choose[0] < 48 || choose[0] > 56);
-		if (choose == "1")
-		{
-
-		}
-		else if (choose == "1")
-		{
-
-		}
-		else if (choose == "2")
-		{
-
-		}
-		else if (choose == "3")
-		{
-
-		}
-		else if (choose == "4")
-		{
-
-		}
-		else if (choose == "5")
-		{
-
-		}
-		else if (choose == "6")
-		{
-
-		}
-		else if (choose == "7")
-		{
-
-		}
-		else if (choose == "8")
-		{
-
-		}
-	}
-}
-
-void ShopAdminMenu()
-{
-	std::string choose;
-	while (true)
-	{
 		do
 		{
 			std::cout << "1. Начать продажу \n";
@@ -148,6 +88,71 @@ void ShopAdminMenu()
 	}
 }
 
+void ShopAdminMenu()
+{
+	std::string choose;
+	while (true)
+	{
+		do
+		{
+			std::cout << "1. Начать продажу \n";
+			std::cout << "2. Показать склад \n";
+			std::cout << "3. Пополнить склад \n";
+			std::cout << "4. Списать со склада\n";
+			std::cout << "5. Изменить цену \n";
+			std::cout << "6. Изменить склад\n";
+			std::cout << "7. Изменить персонал\n";
+			std::cout << "8. Отчет о прибыли\n";
+			std::cout << "0. Закрыть смену \n";
+
+			std::cout << "Ввод: ";
+			std::getline(std::cin, choose, '\n');
+			system("cls");
+
+		} while (choose.size() > 1 || choose[0] < 48 || choose[0] > 56);
+		if (choose == "1")
+		{
+
+		}
+		else if (choose == "1")
+		{
+
+		}
+		else if (choose == "2")
+		{
+
+		}
+		else if (choose == "3")
+		{
+
+		}
+		else if (choose == "4")
+		{
+
+		}
+		else if (choose == "5")
+		{
+
+		}
+		else if (choose == "6")
+		{
+
+		}
+		else if (choose == "7")
+		{
+
+		}
+		else if (choose == "8")
+		{
+
+		}
+		else
+		{
+			std::cerr << "AdminConsErr";
+		}
+	}
+}
+
 void start()
 {
 	SetConsoleCP(1251);
@@ -170,9 +175,9 @@ void start()
 bool login()
 {
 	std::string login, pass;
-	std::cout << "Введите логин";
+	std::cout << "Введите логин: ";
 	std::getline(std::cin, login, '\n');
-	std::cout << "Введите пароль";
+	std::cout << "Введите пароль: ";
 	std::getline(std::cin, pass, '\n');
 
 
