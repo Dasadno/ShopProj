@@ -230,13 +230,21 @@ std::pair <std::string, std::string> register_pass()
 			{
 				check2 = true;
 			}
-			if ((password_pass.length() < 15))
+			if (password_pass.length() < 15 && password_pass.length() > 8)
 			{
 				check3 = true;
+			}
+			else if (password_pass.length() < 8)
+			{
+				std::cout << "Пароль не может быть меньше 8 символов.\n";
 			}
 			if (check1 == true && check2 == true && check3 == true)
 			{
 				break;
+			}
+			else
+			{
+				std::cout << "В пароле должны использоваться заглавные буквы и цифры.\n"
 			}
 
 		}
