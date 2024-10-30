@@ -203,7 +203,7 @@ bool login()
 }
 
 
-
+//register helper if i will use db
 std::pair <std::string, std::string> register_pass()
 {
 	std::string login_pass;
