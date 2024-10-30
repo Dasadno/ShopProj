@@ -2,64 +2,118 @@
 #include <Windows.h>
 #include <string>
 #include <cctype>
-using namespace std;
+#include <limits>
 
-std::pair <string, string> logining_pass();
+#if defined(max)
+#undef max
+#endif
+
+
+std::pair <std::string, std::string> logining_pass();
+void ShopAdminMenu();
+void ShopUserMenu();
+bool login();
+void start()
+
+
+
 bool isAdmin = false;
 int userCount = 2;
 
-string* loginArr = new std::string[userCount]{ "admin", "user" };
-string* passwordArr = new std::string[userCount]{ "admin", "user" };
+std::string* loginArr = new std::string[userCount]{ "admin", "user" };
+std::string* passwordArr = new std::string[userCount]{ "admin", "user" };
 
 int main() {
 	// Учетные записи
 	
-
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-	cout << "\n\n\t\t\t Кругляш \n\n\n";
+	void start();
 	login();
 	
 	return 0;
 }
 
+
+
+void start()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	std::cout << "\n\n\t\t\t Кругляш \n\n\n";
+	if (login() == true)
+	{
+		//std::cin.ignore(std::numeric_limits<std::streamsize>::max());
+		if (isAdmin == true)
+		{
+			ShopAdminMenu();
+		}
+		else
+		{
+			ShopUserMenu();
+		}
+	}
+}
+
+void ShopAdminMenu()
+{
+	std::string choose;
+	while (true)
+	{
+		do
+		{
+			std::cout << "1. Начать продажу \n";
+			std::cout << "2. Показать склад \n";
+			std::cout << "3. Пополнить склад \n";
+			std::cout << "4. Списать со склада\n";
+			std::cout << "5. Изменить цену \n";
+			std::cout << "6. Изменить склад.";
+			std::cout << "7. Изменить персонал\n";
+			std::cout << "8. Отчет о прибыли\n";
+			std::cout << "0. Закрыть смену \n";
+
+			std::cout << "Ввод: ";
+			std::getline(std::cin, choose, '\n');
+
+		} while (choose.size() > 1 || choose[0] < 48 || choose[0] > 56);
+	}
+}
+
 bool login()
 {
-	string login, pass;
-	cout << "Введите логин";
-	getline(cin, login, '\n');
-	cout << "Введите пароль";
-	getline(cin, pass, '\n');
+	std::string login, pass;
+	std::cout << "Введите логин";
+	std::getline(std::cin, login, '\n');
+	std::cout << "Введите пароль";
+	std::getline(std::cin, pass, '\n');
 
-	if (login == loginArr[0] && pass == passwordArr[0])
-	{
-		cout << "Добро пожаловать " << loginArr[0] << '\n';
-		isAdmin = true;
-		return true;
-	}
+
 
 	for (int i = 1; i < userCount; i++)
 	{
-		
+		if (login == loginArr[0] && pass == passwordArr[0])
+		{
+			std::cout << "Добро пожаловать " << loginArr[0] << '\n'; // admin module
+			isAdmin = true;
+			return true;
+		}
 		if (login == loginArr[i] && pass == passwordArr[i])
 		{
-			cout << "Добро пожаловать " << loginArr[i] << '\n';
+			std::cout << "Добро пожаловать " << loginArr[i] << '\n';
 			isAdmin = false;
 			return true;
 		}
 	}
 	system("cls");
-	cout << "Логин или пароль введены неправильно";
+	std::cout << "Логин или пароль введены неправильно";
 }
 
 
 
-std::pair <string, string> register_pass()
+std::pair <std::string, std::string> register_pass()
 {
-	string login_pass;
-	string password_pass;
+	std::string login_pass;
+	std::string password_pass;
 	std::cout << "Введите логин: ";
-	getline(cin, login_pass, '\n');
+	std::getline(std::cin, login_pass, '\n');
 	bool check1 = false;
 	bool check2 = false;
 	bool check3 = false;
@@ -69,7 +123,7 @@ std::pair <string, string> register_pass()
 		check2 = false;
 		check3 = false;
 		std::cout << "Введите пароль: ";
-		getline(cin, password_pass, '\n');
+		getline(std::cin, password_pass, '\n');
 		for (int i = 0; i < password_pass.length(); i++)
 		{
 			if (isupper(password_pass[i]))
