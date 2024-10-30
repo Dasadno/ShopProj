@@ -8,7 +8,7 @@
 #undef max
 #endif
 
-//functios
+//functios define
 std::pair <std::string, std::string> logining_pass();
 void ShopAdminMenu();
 void ShopUserMenu();
@@ -21,8 +21,6 @@ int* idArr = new int[typesize];
 int* countArr = new int[typesize];
 double* priceArr = new double[typesize];
 std::string* nameArr = new std::string[typesize];
-
-
 // -----------------------------------------------
 bool isAdmin = false;
 int userCount = 2;
@@ -38,7 +36,7 @@ int main() {
 	
 	return 0;
 }
-
+//functions
 void ShopUserMenu()
 {
 	std::string choose;
@@ -150,7 +148,6 @@ void ShopAdminMenu()
 	}
 }
 
-
 void start()
 {
 	SetConsoleCP(1251);
@@ -169,8 +166,6 @@ void start()
 		}
 	}
 }
-
-
 
 bool login()
 {
