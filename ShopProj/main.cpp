@@ -31,15 +31,17 @@ bool login()
 	cout << "Введите пароль";
 	getline(cin, pass, '\n');
 
+	if (login == loginArr[0] && pass == passwordArr[0])
+	{
+		cout << "Добро пожаловать " << loginArr[0] << '\n';
+		isAdmin = true;
+		return true;
+	}
+
 	for (int i = 1; i < userCount; i++)
 	{
-		if (login == loginArr[0] && pass == passwordArr[0])
-		{
-			cout << "Добро пожаловать " << loginArr[0] << '\n';
-			isAdmin = true;
-			return true;
-		}
-		else if (login == loginArr[i] && pass == passwordArr[i])
+		
+		if (login == loginArr[i] && pass == passwordArr[i])
 		{
 			cout << "Добро пожаловать " << loginArr[i] << '\n';
 			isAdmin = false;
