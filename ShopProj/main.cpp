@@ -39,7 +39,7 @@ int main() {
 }
 //functions -------------------------------------------
 
-void StartSells()
+void StartSells() 
 {
 
 }
