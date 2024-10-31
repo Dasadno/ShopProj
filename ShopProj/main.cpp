@@ -37,7 +37,32 @@ int main() {
 	
 	return 0;
 }
-//functions
+//functions -------------------------------------------
+
+void StartSells()
+{
+
+}
+
+void ShowWarehouse()
+{
+
+}
+
+void FillWHouse()
+{
+
+}
+
+void RemoveWHousePoint()
+{
+
+}
+void ChangePrice()
+{
+
+}
+
 void ShopUserMenu()
 {
 	std::string choose;
