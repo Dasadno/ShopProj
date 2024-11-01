@@ -30,11 +30,16 @@ std::string* loginArr = new std::string[userCount]{ "admin", "user" };
 std::string* passwordArr = new std::string[userCount]{ "admin", "user" };
 
 int main() {
-	// Учетные записи
 	
 	start();
 
-	
+	delete[] idArr;
+	delete[] countArr;
+	delete[] priceArr;
+	delete[] nameArr;
+	delete[] loginArr;
+	delete[] passwordArr;
+
 	return 0;
 }
 //functions -------------------------------------------
@@ -48,13 +53,37 @@ void ShowWarehouse()
 {
 
 }
-
-void FillWHouse()
+template<typename ArrType>
+void FillStorage(ArrType staticArr[], ArrType dynamicArr[], int size)
 {
+	for (int i = 0; i < size; i++)
+	{
+		dynamicArr[i] = staticArr[i];
+	}
+}
+void CreateStaticStorage()
+{
+	const int staticSize = 10;
+
+	int idStaticArr[staticSize]{ 1,2,3,4,5,6,7,8,9,10 };
+	std::string nameStaticArr[staticSize]
+	{
+		"Арбуз Гаваи", "Арбуз желтый, без семечек",
+		"Арбуз Абхазский", "Арбуз Волгоградский",
+		"Арбуз Азербайджанский", "Арбуз Ахмад", "Арбуз Чеченский",
+		"Дыня Азербайджанская", "Дыня Чеченская", "Дыня Шишка"
+	};
+
+	int countStaticArr[staticSize]{ 12,8,6,11,7,15,8,9,7,8 };
+	double priceStaticArr[staticSize]{ 49.9, 69.9, 29.9, 35.9, 39.9, 26.9, 34.9, 34.9, 41.5, 32.9 };
+
+	FillStorage(idStaticArr, idArr, staticSize);
+	FillStorage(nameStaticArr, nameArr, staticSize);
+	FillStorage(countStaticArr, countArr, staticSize);
+	FillStorage(priceStaticArr, priceArr, staticSize);
 
 }
-
-void RemoveWHousePoint()
+void RemoveStoragePoint()
 {
 
 }
