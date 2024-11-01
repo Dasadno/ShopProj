@@ -52,12 +52,14 @@ int main() {
 
 void ShowStorage()
 {
+	system("cls");
 	std::cout << "ID\tНазвание\t\t\tКол-во\tЦена\n";
 	for (int i = 0; i < typesize; i++)
 	{
-		std::cout << idArr[i] << std::left << std::setw(40) << "\t" << nameArr[i] << "\t"
-			<< countArr[i] << "\t" << priceArr[i] << "\n";
+		std::cout << idArr[i] << '\t' << std::left << std::setw(30) << "\t" << nameArr[i] << "\t" << countArr[i] << "\t" << priceArr[i] << "\n";
+		
 	}
+
 }
 
 void StartSells() 
@@ -97,7 +99,7 @@ void CreateStaticStorage()
 	FillStorage(nameStaticArr, nameArr, staticSize);
 	FillStorage(countStaticArr, countArr, staticSize);
 	FillStorage(priceStaticArr, priceArr, staticSize);
-
+	ShowStorage();
 }
 void RemoveStoragePoint()
 {
@@ -164,56 +166,74 @@ void ShopAdminMenu()
 	std::string choose;
 	while (true)
 	{
-			std::cout << "1. Начать продажу \n";
-			std::cout << "2. Показать склад \n";
-			std::cout << "3. Пополнить склад \n";
-			std::cout << "4. Списать со склада\n";
-			std::cout << "5. Изменить цену \n";
-			std::cout << "6. Изменить склад\n";
-			std::cout << "7. Изменить персонал\n";
-			std::cout << "8. Отчет о прибыли\n";
-			std::cout << "0. Закрыть смену \n";
+		std::cout << "1. Начать продажу \n";
+		std::cout << "2. Показать склад \n";
+		std::cout << "3. Пополнить склад \n";
+		std::cout << "4. Списать со склада\n";
+		std::cout << "5. Изменить цену \n";
+		std::cout << "6. Изменить склад\n";
+		std::cout << "7. Изменить персонал\n";
+		std::cout << "8. Отчет о прибыли\n";
+		std::cout << "0. Закрыть смену \n";
 
-			char choose = _getch();
-		
-		if (choose == '1')
+		std::cout << "Ввод: ";
+		std::getline(std::cin, choose, '\n');
+
+		std::string choose;
+
+
+		do
 		{
+			std::cout << "Ввод: ";
+			std::getline(std::cin, choose, '\n');
 
-		}
-		else if (choose == '1')
-		{
 
-		}
-		else if (choose == '2')
-		{
 
-		}
-		else if (choose == '3')
-		{
+			if (choose == "0")
+			{
 
-		}
-		else if (choose == '4')
-		{
+			}
+			else if (choose == "1")
+			{
+			
+			}
+			else if (choose == "2")
+			{
+				ShowStorage();
+			}
+			else if (choose == "3")
+			{
 
-		}
-		else if (choose == '5')
-		{
+			}
+			else if (choose == "4")
+			{
 
-		}
-		else if (choose == '6')
-		{
+			}
+			else if (choose == "5")
+			{
 
-		}
-		else if (choose == '7')
-		{
+			}
+			else if (choose == "6")
+			{
 
-		}
-		else if (choose == '8')
-		{
+			}
+			else if (choose == "7")
+			{
 
-		}
+			}
+			else if (choose == "8")
+			{
+
+			}
+			else
+			{
+				std::cerr << "UserMenuError";
+				break;
+			}
+		} while (choose.size() > 1 || choose[0] < 48 || choose[0] > 56);
 	}
 }
+
 
 void start()
 {
@@ -260,7 +280,7 @@ bool login()
 	{
 		std::cout << "Добро пожаловать " << loginArr[0] << '\n';
 		isAdmin = true;
-
+		return true;
 	}
 
 
