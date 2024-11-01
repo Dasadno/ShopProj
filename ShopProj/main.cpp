@@ -3,12 +3,18 @@
 #include <string>
 #include <cctype>
 #include <limits>
+#include <conio.h>
+#include <iomanip>
+
 
 #if defined(max)
 #undef max
 #endif
 
 //functios define
+void CreateStaticStorage();
+void ShowStorage();
+template<typename ArrType> void FillStorage(ArrType staticArr[], ArrType dynamicArr[], int size);
 std::pair <std::string, std::string> logining_pass();
 void ShopAdminMenu();
 void ShopUserMenu();
@@ -43,6 +49,16 @@ int main() {
 	return 0;
 }
 //functions -------------------------------------------
+
+void ShowStorage()
+{
+	std::cout << "ID\tНазвание\t\t\tКол-во\tЦена\n";
+	for (int i = 0; i < typesize; i++)
+	{
+		std::cout << idArr[i] << std::left << std::setw(40) << "\t" << nameArr[i] << "\t"
+			<< countArr[i] << "\t" << priceArr[i] << "\n";
+	}
+}
 
 void StartSells() 
 {
@@ -148,8 +164,6 @@ void ShopAdminMenu()
 	std::string choose;
 	while (true)
 	{
-		do
-		{
 			std::cout << "1. Начать продажу \n";
 			std::cout << "2. Показать склад \n";
 			std::cout << "3. Пополнить склад \n";
@@ -160,50 +174,43 @@ void ShopAdminMenu()
 			std::cout << "8. Отчет о прибыли\n";
 			std::cout << "0. Закрыть смену \n";
 
-			std::cout << "Ввод: ";
-			std::getline(std::cin, choose, '\n');
-			system("cls");
-
-		} while (choose.size() > 1 || choose[0] < 48 || choose[0] > 56);
-		if (choose == "1")
+			char choose = _getch();
+		
+		if (choose == '1')
 		{
 
 		}
-		else if (choose == "1")
+		else if (choose == '1')
 		{
 
 		}
-		else if (choose == "2")
+		else if (choose == '2')
 		{
 
 		}
-		else if (choose == "3")
+		else if (choose == '3')
 		{
 
 		}
-		else if (choose == "4")
+		else if (choose == '4')
 		{
 
 		}
-		else if (choose == "5")
+		else if (choose == '5')
 		{
 
 		}
-		else if (choose == "6")
+		else if (choose == '6')
 		{
 
 		}
-		else if (choose == "7")
+		else if (choose == '7')
 		{
 
 		}
-		else if (choose == "8")
+		else if (choose == '8')
 		{
 
-		}
-		else
-		{
-			std::cerr << "AdminConsErr";
 		}
 	}
 }
@@ -218,10 +225,24 @@ void start()
 		//std::cin.ignore(std::numeric_limits<std::streamsize>::max());
 		if (isAdmin == true)
 		{
+			
+			std::cout << "1 - Использовать готовый склад \n2 - Создать новый склад\n";
+			char key = _getch();
+			if (key == '1')
+			{
+				CreateStaticStorage();
+			}
+			else if (key == '2')
+			{
+				// Динамический склад
+			}
+
+
 			ShopAdminMenu();
 		}
 		else
 		{
+			CreateStaticStorage();
 			ShopUserMenu();
 		}
 	}
@@ -234,6 +255,13 @@ bool login()
 	std::getline(std::cin, login, '\n');
 	std::cout << "Введите пароль: ";
 	std::getline(std::cin, pass, '\n');
+
+	if (login == loginArr[0] && pass == passwordArr[0])
+	{
+		std::cout << "Добро пожаловать " << loginArr[0] << '\n';
+		isAdmin = true;
+
+	}
 
 
 
