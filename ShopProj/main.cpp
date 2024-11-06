@@ -82,24 +82,26 @@ void FillStorage(ArrType staticArr[], ArrType dynamicArr[], int size)
 
 void ChangeStaff() {
 	system("cls");
-	char choose = getch();
+	std::string choose1;
 
 	while (true) {
 		std::cout << "1 - Добавить нового сотрудника\n2 - Отредактировать учетную запись сотрудника\n"
-			"3 - Удалить сотрудника\n0 - Выход\n\n"; 
-		if (choose == '1')
+			"3 - Удалить сотрудника\n0 - Выход\n\nВвод: ";
+		std::getline(std::cin, choose1, '\n');
+
+		if (choose1 == "1")
 		{
 
 		}
-		if (choose == '2')
+		if (choose1 == "2")
 		{
 
 		}
-		if (choose == '3')
+		if (choose1 == "3")
 		{
 
 		}
-		if (choose == '0')
+		if (choose1 == "0")
 		{
 			break;
 		}
