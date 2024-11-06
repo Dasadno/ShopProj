@@ -55,7 +55,7 @@ int main() {
 void ShowStorage()
 {
 	system("cls");
-	std::cout << "ID\tÍàçâàíèå\t\t\tÊîë-âî\tÖåíà\n";
+	std::cout << "ID\tĞĞ°Ğ·Ğ²Ğ°Ğ½Ğ¸Ğµ\t\t\tĞšĞ¾Ğ»-Ğ²Ğ¾\tĞ¦ĞµĞ½Ğ°\n";
 	for (int i = 0; i < typesize; i++)
 	{
 		std::cout << idArr[i] << '\t' << std::left << std::setw(30) << nameArr[i] << "\t" << countArr[i] << "\t" << priceArr[i] << "\n";
@@ -84,10 +84,10 @@ void CreateStaticStorage()
 	int idStaticArr[staticSize]{ 1,2,3,4,5,6,7,8,9,10 };
 	std::string nameStaticArr[staticSize]
 	{
-		"Àğáóç Ãàâàè", "Àğáóç æåëòûé, áåç ñåìå÷åê",
-		"Àğáóç Àáõàçñêèé", "Àğáóç Âîëãîãğàäñêèé",
-		"Àğáóç Àçåğáàéäæàíñêèé", "Àğáóç Àõìàä", "Àğáóç ×å÷åíñêèé",
-		"Äûíÿ Àçåğáàéäæàíñêàÿ", "Äûíÿ ×å÷åíñêàÿ", "Äûíÿ Øèøêà"
+		"ĞÑ€Ğ±ÑƒĞ· Ğ“Ğ°Ğ²Ğ°Ğ¸", "ĞÑ€Ğ±ÑƒĞ· Ğ¶ĞµĞ»Ñ‚Ñ‹Ğ¹, Ğ±ĞµĞ· ÑĞµĞ¼ĞµÑ‡ĞµĞº",
+		"ĞÑ€Ğ±ÑƒĞ· ĞĞ±Ñ…Ğ°Ğ·ÑĞºĞ¸Ğ¹", "ĞÑ€Ğ±ÑƒĞ· Ğ’Ğ¾Ğ»Ğ³Ğ¾Ğ³Ñ€Ğ°Ğ´ÑĞºĞ¸Ğ¹",
+		"ĞÑ€Ğ±ÑƒĞ· ĞĞ·ĞµÑ€Ğ±Ğ°Ğ¹Ğ´Ğ¶Ğ°Ğ½ÑĞºĞ¸Ğ¹", "ĞÑ€Ğ±ÑƒĞ· ĞÑ…Ğ¼Ğ°Ğ´", "ĞÑ€Ğ±ÑƒĞ· Ğ§ĞµÑ‡ĞµĞ½ÑĞºĞ¸Ğ¹",
+		"Ğ”Ñ‹Ğ½Ñ ĞĞ·ĞµÑ€Ğ±Ğ°Ğ¹Ğ´Ğ¶Ğ°Ğ½ÑĞºĞ°Ñ", "Ğ”Ñ‹Ğ½Ñ Ğ§ĞµÑ‡ĞµĞ½ÑĞºĞ°Ñ", "Ğ”Ñ‹Ğ½Ñ Ğ¨Ğ¸ÑˆĞºĞ°"
 	};
 
 	int countStaticArr[staticSize]{ 12,8,6,11,7,15,8,9,7,8 };
@@ -122,7 +122,7 @@ void ChangePrice()
 }
 void RefilStorage() {
 	std::string idStr, addStr, choose;
-	std::cout << "Ïîïîëíåíèå ñêëàäà \nÂâåäèòå id òîâàğà: ";
+	std::cout << "ĞŸĞ¾Ğ¿Ğ¾Ğ»Ğ½ĞµĞ½Ğ¸Ğµ ÑĞºĞ»Ğ°Ğ´Ğ° \nĞ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ id Ñ‚Ğ¾Ğ²Ğ°Ñ€Ğ°: ";
 	std::getline(std::cin, idStr, '\n');
 	int id{}, add;	
 	
@@ -142,7 +142,7 @@ void RefilStorage() {
 		}
 		else
 		{
-			std::cout << "Îøèáêà ââîäà";
+			std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ°";
 	
 		}
 		if (id > 0 && id <= typesize)
@@ -151,14 +151,14 @@ void RefilStorage() {
 		}
 		else
 		{
-			std::cout << "Îøèáêà ââîäà";
+			std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ°";
 		}
 	}
 	std::cout << "\n\n" << idArr[id - 1] << " " << nameArr[id - 1] << "\n\n";
 
 	while(true)
 	{
-		std::cout << "Ââåäèòå êîë-âî òîâàğîâ íà ïîïîëíåíèå: ";
+		std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ ĞºĞ¾Ğ»-Ğ²Ğ¾ Ñ‚Ğ¾Ğ²Ğ°Ñ€Ğ¾Ğ² Ğ½Ğ° Ğ¿Ğ¾Ğ¿Ğ¾Ğ»Ğ½ĞµĞ½Ğ¸Ğµ: ";
 		std::getline(std::cin, addStr, '\n');
 	if(add >= 0 && add < 100)
 		if (isStringDigit(addStr))
@@ -167,12 +167,12 @@ void RefilStorage() {
 		}
 		else
 		{
-			std::cout << "Îøèáêà ââîäà";
+			std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ°";
 		}
 	}
 
-	std::cout << "Äîáàâèòü " << add << " òîâàğà(îâ)" << nameArr[id - 1] << "?";
-	std::cout << "1 - Äà\t2 - Íåò\t3 - Îòìåíà\n\n";
+	std::cout << "Ğ”Ğ¾Ğ±Ğ°Ğ²Ğ¸Ñ‚ÑŒ " << add << " Ñ‚Ğ¾Ğ²Ğ°Ñ€Ğ°(Ğ¾Ğ²)" << nameArr[id - 1] << "?";
+	std::cout << "1 - Ğ”Ğ°\t2 - ĞĞµÑ‚\t3 - ĞÑ‚Ğ¼ĞµĞ½Ğ°\n\n";
 	std::getline(std::cin, choose, '\n');
 	if (choose == "1")
 	{
@@ -189,14 +189,14 @@ void ShopUserMenu()
 
 		do
 		{
-			std::cout << "1. Íà÷àòü ïğîäàæó \n";
-			std::cout << "2. Ïîêàçàòü ñêëàä \n";
-			std::cout << "3. Ñïèñàòü ñî ñêëàäà\n";
-			std::cout << "4. Îò÷åò î ïğèáûëè\n";
-			std::cout << "5. Ïîïîëíèòü ñêëàä\n";
-			std::cout << "0. Çàêğûòü ñìåíó \n";
+			std::cout << "1. ĞĞ°Ñ‡Ğ°Ñ‚ÑŒ Ğ¿Ñ€Ğ¾Ğ´Ğ°Ğ¶Ñƒ \n";
+			std::cout << "2. ĞŸĞ¾ĞºĞ°Ğ·Ğ°Ñ‚ÑŒ ÑĞºĞ»Ğ°Ğ´ \n";
+			std::cout << "3. Ğ¡Ğ¿Ğ¸ÑĞ°Ñ‚ÑŒ ÑĞ¾ ÑĞºĞ»Ğ°Ğ´Ğ°\n";
+			std::cout << "4. ĞÑ‚Ñ‡ĞµÑ‚ Ğ¾ Ğ¿Ñ€Ğ¸Ğ±Ñ‹Ğ»Ğ¸\n";
+			std::cout << "5. ĞŸĞ¾Ğ¿Ğ¾Ğ»Ğ½Ğ¸Ñ‚ÑŒ ÑĞºĞ»Ğ°Ğ´\n";
+			std::cout << "0. Ğ—Ğ°ĞºÑ€Ñ‹Ñ‚ÑŒ ÑĞ¼ĞµĞ½Ñƒ \n";
 
-			std::cout << "Ââîä: ";
+			std::cout << "Ğ’Ğ²Ğ¾Ğ´: ";
 			std::getline(std::cin, choose, '\n');
 			system("cls");
 
@@ -237,22 +237,22 @@ void ShopAdminMenu()
 	std::string choose;
 	while (true)
 	{
-		std::cout << "1. Íà÷àòü ïğîäàæó \n";
-		std::cout << "2. Ïîêàçàòü ñêëàä \n";
-		std::cout << "3. Ïîïîëíèòü ñêëàä \n";
-		std::cout << "4. Ñïèñàòü ñî ñêëàäà\n";
-		std::cout << "5. Èçìåíèòü öåíó \n";
-		std::cout << "6. Èçìåíèòü ñêëàä\n";
-		std::cout << "7. Èçìåíèòü ïåğñîíàë\n";
-		std::cout << "8. Îò÷åò î ïğèáûëè\n";
-		std::cout << "0. Çàêğûòü ñìåíó \n";
+		std::cout << "1. ĞĞ°Ñ‡Ğ°Ñ‚ÑŒ Ğ¿Ñ€Ğ¾Ğ´Ğ°Ğ¶Ñƒ \n";
+		std::cout << "2. ĞŸĞ¾ĞºĞ°Ğ·Ğ°Ñ‚ÑŒ ÑĞºĞ»Ğ°Ğ´ \n";
+		std::cout << "3. ĞŸĞ¾Ğ¿Ğ¾Ğ»Ğ½Ğ¸Ñ‚ÑŒ ÑĞºĞ»Ğ°Ğ´ \n";
+		std::cout << "4. Ğ¡Ğ¿Ğ¸ÑĞ°Ñ‚ÑŒ ÑĞ¾ ÑĞºĞ»Ğ°Ğ´Ğ°\n";
+		std::cout << "5. Ğ˜Ğ·Ğ¼ĞµĞ½Ğ¸Ñ‚ÑŒ Ñ†ĞµĞ½Ñƒ \n";
+		std::cout << "6. Ğ˜Ğ·Ğ¼ĞµĞ½Ğ¸Ñ‚ÑŒ ÑĞºĞ»Ğ°Ğ´\n";
+		std::cout << "7. Ğ˜Ğ·Ğ¼ĞµĞ½Ğ¸Ñ‚ÑŒ Ğ¿ĞµÑ€ÑĞ¾Ğ½Ğ°Ğ»\n";
+		std::cout << "8. ĞÑ‚Ñ‡ĞµÑ‚ Ğ¾ Ğ¿Ñ€Ğ¸Ğ±Ñ‹Ğ»Ğ¸\n";
+		std::cout << "0. Ğ—Ğ°ĞºÑ€Ñ‹Ñ‚ÑŒ ÑĞ¼ĞµĞ½Ñƒ \n";
 
 		std::string choose;
 
 
 		do
 		{
-			std::cout << "Ââîä: ";
+			std::cout << "Ğ’Ğ²Ğ¾Ğ´: ";
 			std::getline(std::cin, choose, '\n');
 
 
@@ -307,14 +307,14 @@ void start()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	std::cout << "\n\n\t\t\t Êğóãëÿø \n\n\n";
+	std::cout << "\n\n\t\t\t ĞšÑ€ÑƒĞ³Ğ»ÑÑˆ \n\n\n";
 	if (login() == true)
 	{
 		//std::cin.ignore(std::numeric_limits<std::streamsize>::max());
 		if (isAdmin == true)
 		{
 			
-			std::cout << "1 - Èñïîëüçîâàòü ãîòîâûé ñêëàä \n2 - Ñîçäàòü íîâûé ñêëàä\n";
+			std::cout << "1 - Ğ˜ÑĞ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ÑŒ Ğ³Ğ¾Ñ‚Ğ¾Ğ²Ñ‹Ğ¹ ÑĞºĞ»Ğ°Ğ´ \n2 - Ğ¡Ğ¾Ğ·Ğ´Ğ°Ñ‚ÑŒ Ğ½Ğ¾Ğ²Ñ‹Ğ¹ ÑĞºĞ»Ğ°Ğ´\n";
 			char key = _getch();
 			if (key == '1')
 			{
@@ -322,7 +322,7 @@ void start()
 			}
 			else if (key == '2')
 			{
-				// Äèíàìè÷åñêèé ñêëàä
+				// Ğ”Ğ¸Ğ½Ğ°Ğ¼Ğ¸Ñ‡ĞµÑĞºĞ¸Ğ¹ ÑĞºĞ»Ğ°Ğ´
 			}
 
 
@@ -339,14 +339,14 @@ void start()
 bool login()
 {
 	std::string login, pass;
-	std::cout << "Ââåäèòå ëîãèí: ";
+	std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ»Ğ¾Ğ³Ğ¸Ğ½: ";
 	std::getline(std::cin, login, '\n');
-	std::cout << "Ââåäèòå ïàğîëü: ";
+	std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¿Ğ°Ñ€Ğ¾Ğ»ÑŒ: ";
 	std::getline(std::cin, pass, '\n');
 
 	if (login == loginArr[0] && pass == passwordArr[0])
 	{
-		std::cout << "Äîáğî ïîæàëîâàòü " << loginArr[0] << '\n';
+		std::cout << "Ğ”Ğ¾Ğ±Ñ€Ğ¾ Ğ¿Ğ¾Ğ¶Ğ°Ğ»Ğ¾Ğ²Ğ°Ñ‚ÑŒ " << loginArr[0] << '\n';
 		isAdmin = true;
 		return true;
 	}
@@ -357,19 +357,19 @@ bool login()
 	{
 		if (login == loginArr[0] && pass == passwordArr[0])
 		{
-			std::cout << "Äîáğî ïîæàëîâàòü " << loginArr[0] << '\n'; // admin module
+			std::cout << "Ğ”Ğ¾Ğ±Ñ€Ğ¾ Ğ¿Ğ¾Ğ¶Ğ°Ğ»Ğ¾Ğ²Ğ°Ñ‚ÑŒ " << loginArr[0] << '\n'; // admin module
 			isAdmin = true;
 			return true;
 		}
 		if (login == loginArr[i] && pass == passwordArr[i])
 		{
-			std::cout << "Äîáğî ïîæàëîâàòü " << loginArr[i] << '\n';
+			std::cout << "Ğ”Ğ¾Ğ±Ñ€Ğ¾ Ğ¿Ğ¾Ğ¶Ğ°Ğ»Ğ¾Ğ²Ğ°Ñ‚ÑŒ " << loginArr[i] << '\n';
 			isAdmin = false;
 			return true;
 		}
 	}
 	system("cls");
-	std::cout << "Ëîãèí èëè ïàğîëü ââåäåíû íåïğàâèëüíî";
+	std::cout << "Ğ›Ğ¾Ğ³Ğ¸Ğ½ Ğ¸Ğ»Ğ¸ Ğ¿Ğ°Ñ€Ğ¾Ğ»ÑŒ Ğ²Ğ²ĞµĞ´ĞµĞ½Ñ‹ Ğ½ĞµĞ¿Ñ€Ğ°Ğ²Ğ¸Ğ»ÑŒĞ½Ğ¾";
 }
 
 
@@ -378,7 +378,7 @@ std::pair <std::string, std::string> register_pass()
 {
 	std::string login_pass;
 	std::string password_pass;
-	std::cout << "Ââåäèòå ëîãèí: ";
+	std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ»Ğ¾Ğ³Ğ¸Ğ½: ";
 	std::getline(std::cin, login_pass, '\n');
 	bool check1 = false;
 	bool check2 = false;
@@ -388,7 +388,7 @@ std::pair <std::string, std::string> register_pass()
 		check1 = false;
 		check2 = false;
 		check3 = false;
-		std::cout << "Ââåäèòå ïàğîëü: ";
+		std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ¿Ğ°Ñ€Ğ¾Ğ»ÑŒ: ";
 		getline(std::cin, password_pass, '\n');
 		for (int i = 0; i < password_pass.length(); i++)
 		{
@@ -406,7 +406,7 @@ std::pair <std::string, std::string> register_pass()
 			}
 			else if (password_pass.length() < 8)
 			{
-				std::cout << "Ïàğîëü íå ìîæåò áûòü ìåíüøå 8 ñèìâîëîâ.\n";
+				std::cout << "ĞŸĞ°Ñ€Ğ¾Ğ»ÑŒ Ğ½Ğµ Ğ¼Ğ¾Ğ¶ĞµÑ‚ Ğ±Ñ‹Ñ‚ÑŒ Ğ¼ĞµĞ½ÑŒÑˆĞµ 8 ÑĞ¸Ğ¼Ğ²Ğ¾Ğ»Ğ¾Ğ².\n";
 			}
 			if (check1 == true && check2 == true && check3 == true)
 			{
@@ -414,7 +414,7 @@ std::pair <std::string, std::string> register_pass()
 			}
 			else
 			{
-				std::cout << "Â ïàğîëå äîëæíû èñïîëüçîâàòüñÿ çàãëàâíûå áóêâû è öèôğû.\n";
+				std::cout << "Ğ’ Ğ¿Ğ°Ñ€Ğ¾Ğ»Ğµ Ğ´Ğ¾Ğ»Ğ¶Ğ½Ñ‹ Ğ¸ÑĞ¿Ğ¾Ğ»ÑŒĞ·Ğ¾Ğ²Ğ°Ñ‚ÑŒÑÑ Ğ·Ğ°Ğ³Ğ»Ğ°Ğ²Ğ½Ñ‹Ğµ Ğ±ÑƒĞºĞ²Ñ‹ Ğ¸ Ñ†Ğ¸Ñ„Ñ€Ñ‹.\n";
 			}
 
 		}
