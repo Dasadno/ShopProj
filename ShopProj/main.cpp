@@ -12,6 +12,8 @@
 #endif
 
 //functios define
+bool isStringDigit(std::string string);
+void RefilStorage();
 void CreateStaticStorage();
 void ShowStorage();
 template<typename ArrType> void FillStorage(ArrType staticArr[], ArrType dynamicArr[], int size);
@@ -56,7 +58,7 @@ void ShowStorage()
 	std::cout << "ID\tНазвание\t\t\tКол-во\tЦена\n";
 	for (int i = 0; i < typesize; i++)
 	{
-		std::cout << idArr[i] << '\t' << std::left << std::setw(30) << "\t" << nameArr[i] << "\t" << countArr[i] << "\t" << priceArr[i] << "\n";
+		std::cout << idArr[i] << '\t' << std::left << std::setw(30) << nameArr[i] << "\t" << countArr[i] << "\t" << priceArr[i] << "\n";
 		
 	}
 
@@ -67,10 +69,6 @@ void StartSells()
 
 }
 
-void ShowWarehouse()
-{
-
-}
 template<typename ArrType>
 void FillStorage(ArrType staticArr[], ArrType dynamicArr[], int size)
 {
@@ -101,12 +99,85 @@ void CreateStaticStorage()
 	FillStorage(priceStaticArr, priceArr, staticSize);
 	ShowStorage();
 }
+bool isStringDigit(std::string string)
+{
+	for (int i = 0; i < string.size(); i++)
+	{
+		if (!std::isdigit(string[i]))
+		{
+			return false;
+		}
+
+	}
+	return true;
+}
+
 void RemoveStoragePoint()
 {
 
 }
 void ChangePrice()
 {
+
+}
+void RefilStorage() {
+	std::string idStr, addStr, choose;
+	std::cout << "Пополнение склада \nВведите id товара: ";
+	std::getline(std::cin, idStr, '\n');
+	int id{}, add;	
+	
+	while (true)
+	{
+		std::getline(std::cin, idStr, '\n');
+
+		if (std::isdigit(idStr[0]) && idStr.size() == 1)
+		{
+			id = std::stoi(idStr);
+			
+		}
+		else if (std::isdigit(idStr[0]) && std::isdigit(idStr[1]) && idStr.size() == 2)
+		{
+			id = std::stoi(idStr);
+			
+		}
+		else
+		{
+			std::cout << "Ошибка ввода";
+	
+		}
+		if (id > 0 && id <= typesize)
+		{	
+			system("cls");
+		}
+		else
+		{
+			std::cout << "Ошибка ввода";
+		}
+	}
+	std::cout << "\n\n" << idArr[id - 1] << " " << nameArr[id - 1] << "\n\n";
+
+	while(true)
+	{
+		std::cout << "Введите кол-во товаров на пополнение: ";
+		std::getline(std::cin, addStr, '\n');
+	if(add >= 0 && add < 100)
+		if (isStringDigit(addStr))
+		{
+			add = std::stoi(addStr);
+		}
+		else
+		{
+			std::cout << "Ошибка ввода";
+		}
+	}
+
+	std::cout << "Добавить " << add << " товара(ов)" << nameArr[id - 1] << "?";
+	std::cout << "1 - Да\t2 - Нет\t3 - Отмена\n\n";
+	std::getline(std::cin, choose, '\n');
+	if (choose == "1")
+	{
+
+	}
 
 }
 
@@ -152,7 +223,7 @@ void ShopUserMenu()
 		}
 		else if (choose == "5")
 		{
-
+			RefilStorage();
 		}
 		else
 		{
@@ -175,9 +246,6 @@ void ShopAdminMenu()
 		std::cout << "7. Изменить персонал\n";
 		std::cout << "8. Отчет о прибыли\n";
 		std::cout << "0. Закрыть смену \n";
-
-		std::cout << "Ввод: ";
-		std::getline(std::cin, choose, '\n');
 
 		std::string choose;
 
@@ -203,7 +271,7 @@ void ShopAdminMenu()
 			}
 			else if (choose == "3")
 			{
-
+				RefilStorage();
 			}
 			else if (choose == "4")
 			{
