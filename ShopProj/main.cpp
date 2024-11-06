@@ -12,6 +12,8 @@
 #endif
 
 //functios define
+void ChangeStaff();
+void RemoveFromStorage();
 bool isStringDigit(std::string string);
 void RefilStorage();
 void CreateStaticStorage();
@@ -77,6 +79,32 @@ void FillStorage(ArrType staticArr[], ArrType dynamicArr[], int size)
 		dynamicArr[i] = staticArr[i];
 	}
 }
+
+void ChangeStaff() {
+	system("cls");
+	char choose = getch();
+
+	while (true) {
+		std::cout << "1 - Добавить нового сотрудника\n2 - Отредактировать учетную запись сотрудника\n"
+			"3 - Удалить сотрудника\n0 - Выход\n\n"; 
+		if (choose == '1')
+		{
+
+		}
+		if (choose == '2')
+		{
+
+		}
+		if (choose == '3')
+		{
+
+		}
+		if (choose == '0')
+		{
+			break;
+		}
+	}
+}
 void CreateStaticStorage()
 {
 	const int staticSize = 10;
@@ -97,7 +125,6 @@ void CreateStaticStorage()
 	FillStorage(nameStaticArr, nameArr, staticSize);
 	FillStorage(countStaticArr, countArr, staticSize);
 	FillStorage(priceStaticArr, priceArr, staticSize);
-	ShowStorage();
 }
 bool isStringDigit(std::string string)
 {
@@ -111,76 +138,282 @@ bool isStringDigit(std::string string)
 	}
 	return true;
 }
-
-void RemoveStoragePoint()
+void RemoveFromStorage()
 {
+	system("cls");
+	ShowStorage();
+	std::cout << "\n\n\n";
+	std::string idStr, removeStr, choose;
+	int id{}, remove;
+	bool exit = false;
+	while (!exit)
+	{
 
+		while (true)
+		{
+			std::cout << "Cписание со склада склада \nВведите id товара: ";
+			std::getline(std::cin, idStr, '\n');
+
+			if (std::isdigit(idStr[0]) && idStr.size() == 1)
+			{
+				id = std::stoi(idStr);
+
+			}
+			else if (std::isdigit(idStr[0]) && std::isdigit(idStr[1]) && idStr.size() == 2)
+			{
+				id = std::stoi(idStr);
+
+			}
+			else
+			{
+				std::cout << "Ошибка ввода";
+
+			}
+			if (id > 0 && id <= typesize)
+			{
+				system("cls");
+				break;
+			}
+			else
+			{
+				std::cout << "Ошибка ввода";
+			}
+		}
+		std::cout << "\n\n" << idArr[id - 1] << " " << nameArr[id - 1] << "\n Кол-во товара: " << countArr[id - 1] << "\n\n";
+
+		while (true)
+		{
+			std::cout << "Введите кол-во товаров на списание со склада: ";
+			std::getline(std::cin, removeStr, '\n');
+			if (isStringDigit(removeStr))
+			{
+				remove = std::stoi(removeStr);
+			}
+			if (remove >= 0 && remove < countArr[id - 1])
+			{
+				break;
+			}
+			else
+			{
+				std::cout << "Ошибка ввода";
+			}
+		}
+		while (true)
+		{
+
+			std::cout << "Списать? " << remove << " товара(ов)" << nameArr[id - 1] << "?\n";
+			std::cout << "1 - Да\t\t2 - Нет\t\t3 - Отмена\n\n";
+			std::getline(std::cin, choose, '\n');
+
+			if (choose == "1")
+			{
+				countArr[id - 1] -= remove;
+				std::cout << "Товар успешно списан\n\n";
+				exit = true;
+				break;
+			}
+			if (choose == "2")
+			{
+				break;
+			}
+			if (choose == "3")
+			{
+				exit = true;
+				break;
+			}
+			else
+			{
+				std::cerr << "Ошибка ввода";
+			}
+		}
+
+	}
 }
 void ChangePrice()
 {
+	system("cls");
+	ShowStorage();
+	std::cout << "\n\n\n";
+	std::string idStr, changeStr, choose;
+	int id{};
+	double change;
+	bool exit = false;
 
-}
-void RefilStorage() {
-	std::string idStr, addStr, choose;
-	std::cout << "Пополнение склада \nВведите id товара: ";
-	std::getline(std::cin, idStr, '\n');
-	int id{}, add;	
-	
-	while (true)
+	while (!exit)
 	{
-		std::getline(std::cin, idStr, '\n');
 
-		if (std::isdigit(idStr[0]) && idStr.size() == 1)
+		while (true)
 		{
-			id = std::stoi(idStr);
-			
+			std::cout << "Изменение цены товара\nВведите id товара: ";
+			std::getline(std::cin, idStr, '\n');
+
+			if (std::isdigit(idStr[0]) && idStr.size() == 1)
+			{
+				id = std::stoi(idStr);
+
+			}
+			else if (std::isdigit(idStr[0]) && std::isdigit(idStr[1]) && idStr.size() == 2)
+			{
+				id = std::stoi(idStr);
+
+			}
+			else
+			{
+				std::cout << "Ошибка ввода";
+
+			}
+			if (id > 0 && id <= typesize)
+			{
+				system("cls");
+				break;
+			}
+			else
+			{
+				std::cout << "Ошибка ввода";
+			}
 		}
-		else if (std::isdigit(idStr[0]) && std::isdigit(idStr[1]) && idStr.size() == 2)
+		std::cout << "\n\n" << idArr[id - 1] << " " << nameArr[id - 1] << "\n Цена товара: " << priceArr[id - 1] << "\n\n";
+
+		while (true)
 		{
-			id = std::stoi(idStr);
-			
+			std::cout << "Введите новую цену арбуза за кг: ";
+			std::getline(std::cin, changeStr, '\n');
+			if (isStringDigit(changeStr))
+			{
+				change = std::stoi(changeStr);
+			}
+			if (change >= 0 && change <= 150)
+			{
+				break;
+			}
+			else
+			{
+				std::cout << "Ошибка ввода";
+			}
 		}
-		else
+		while (true)
 		{
-			std::cout << "Ошибка ввода";
-	
+
+			std::cout << "Назначить товару " <<  nameArr[id - 1] << " новую цену" << "?\n";
+			std::cout << "1 - Да\t\t2 - Нет\t\t3 - Отмена\n\n";
+			std::getline(std::cin, choose, '\n');
+
+			if (choose == "1")
+			{
+				priceArr[id - 1] = (change + 0.9);
+				std::cout << "Цена успешно установлена\n\n";
+				exit = true;
+				break;
+			}
+			if (choose == "2")
+			{
+				break;
+			}
+			if (choose == "3")
+			{
+				exit = true;
+				break;
+			}
+			else
+			{
+				std::cerr << "Ошибка ввода";
+			}
 		}
-		if (id > 0 && id <= typesize)
-		{	
-			system("cls");
-		}
-		else
-		{
-			std::cout << "Ошибка ввода";
-		}
+
 	}
-	std::cout << "\n\n" << idArr[id - 1] << " " << nameArr[id - 1] << "\n\n";
+}
+void RefillStorage() {
 
-	while(true)
+	system("cls");
+	ShowStorage();
+	std::cout << "\n\n\n";
+	std::string idStr, addStr, choose;
+	int id{}, add;
+	bool exit = false;
+	while (!exit)
+	{
+
+		while (true)
+		{
+			std::cout << "Пополнение склада \nВведите id товара: ";
+			std::getline(std::cin, idStr, '\n');
+
+			if (std::isdigit(idStr[0]) && idStr.size() == 1)
+			{
+				id = std::stoi(idStr);
+
+			}
+			else if (std::isdigit(idStr[0]) && std::isdigit(idStr[1]) && idStr.size() == 2)
+			{
+				id = std::stoi(idStr);
+
+			}
+			else
+			{
+				std::cout << "Ошибка ввода";
+
+			}
+			if (id > 0 && id <= typesize)
+			{
+				system("cls");
+				break;
+			}
+			else
+			{
+				std::cout << "Ошибка ввода";
+			}
+		}
+		std::cout << "\n\n" << idArr[id - 1] << "\t" << nameArr[id - 1] <<"\t" << countArr[id - 1] << "\n\n";
+
+	while (true)
 	{
 		std::cout << "Введите кол-во товаров на пополнение: ";
 		std::getline(std::cin, addStr, '\n');
-	if(add >= 0 && add < 100)
-		if (isStringDigit(addStr))
+			if (isStringDigit(addStr))
+			{
+				add = std::stoi(addStr);
+			}
+			if (add >= 0 && add < 30)
+			{
+				break;
+			}
+			else
+			{
+				std::cout << "Ошибка ввода";
+			}
+	}
+	while(true)
+	{
+
+		std::cout << "Добавить " << add << " товара(ов)" << nameArr[id - 1] << "?\n";
+		std::cout << "1 - Да\t\t2 - Нет\t\t3 - Отмена\n\n";
+		std::getline(std::cin, choose, '\n');
+
+		if (choose == "1")
 		{
-			add = std::stoi(addStr);
+			countArr[id - 1] += add;
+			std::cout << "Товар успешно пополнен\n\n";
+			exit = true;
+			break;
+		}
+		if (choose == "2")
+		{
+			break;
+		}
+		if (choose == "3")
+		{
+			exit = true;
+			break;
 		}
 		else
 		{
-			std::cout << "Ошибка ввода";
+			std::cerr << "Ошибка ввода";
 		}
-	}
-
-	std::cout << "Добавить " << add << " товара(ов)" << nameArr[id - 1] << "?";
-	std::cout << "1 - Да\t2 - Нет\t3 - Отмена\n\n";
-	std::getline(std::cin, choose, '\n');
-	if (choose == "1")
-	{
-
 	}
 
 }
 
+}
 void ShopUserMenu()
 {
 	std::string choose;
@@ -215,15 +448,15 @@ void ShopUserMenu()
 		}
 		else if (choose == "3")
 		{
-
+			RemoveFromStorage();
 		}
 		else if (choose == "4")
 		{
-
+			
 		}
 		else if (choose == "5")
 		{
-			RefilStorage();
+			RefillStorage();
 		}
 		else
 		{
@@ -231,7 +464,6 @@ void ShopUserMenu()
 		}
 	}
 }
-
 void ShopAdminMenu()
 {
 	std::string choose;
@@ -271,15 +503,15 @@ void ShopAdminMenu()
 			}
 			else if (choose == "3")
 			{
-				RefilStorage();
+				RefillStorage();
 			}
 			else if (choose == "4")
 			{
-
+				RemoveFromStorage();
 			}
 			else if (choose == "5")
 			{
-
+				ChangePrice();
 			}
 			else if (choose == "6")
 			{
@@ -287,7 +519,7 @@ void ShopAdminMenu()
 			}
 			else if (choose == "7")
 			{
-
+				ChangeStaff();
 			}
 			else if (choose == "8")
 			{
@@ -325,11 +557,12 @@ void start()
 				// Динамический склад
 			}
 
-
+			std::cout << "\n\n";
 			ShopAdminMenu();
 		}
 		else
 		{
+			std::cout << "\n\n";
 			CreateStaticStorage();
 			ShopUserMenu();
 		}
