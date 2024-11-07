@@ -1,7 +1,6 @@
 #include <iostream>
 #include <Windows.h>
 #include <string>
-#include <cctype>
 #include <limits>
 #include <conio.h>
 #include <iomanip>
@@ -12,10 +11,11 @@
 #endif
 
 //functios define
+void AddEmployee();
 void ChangeStaff();
 void RemoveFromStorage();
 bool isStringDigit(std::string string);
-void RefilStorage();
+void RefillStorage();
 void CreateStaticStorage();
 void ShowStorage();
 template<typename ArrType> void FillStorage(ArrType staticArr[], ArrType dynamicArr[], int size);
@@ -41,6 +41,7 @@ std::string* passwordArr = new std::string[userCount]{ "admin", "user" };
 
 int main() {
 	
+
 	start();
 
 	delete[] idArr;
@@ -80,6 +81,27 @@ void FillStorage(ArrType staticArr[], ArrType dynamicArr[], int size)
 	}
 }
 
+void AddEmployee() {
+	std::string* tempLogin = new std::string[userCount];
+	std::string* tempPass = new std::string[userCount];
+
+	std::string newLogin, newPass;
+
+	std::cout << "Введите логин нового сотрудника: ";
+	std::getline(std::cin, newLogin, '\n');
+	std::cout << "Введите пароль нового сотрудника: ";
+	std::getline(std::cin, newPass, '\n');
+
+	tempLogin[userCount - 1] = newLogin;
+	tempPass[userCount - 1] = newPass;
+
+	std::swap(tempLogin, loginArr);
+	std::swap(tempPass, passwordArr);
+
+	delete[] tempLogin;
+	delete[] tempPass;
+}
+
 void ChangeStaff() {
 	system("cls");
 	std::string choose1;
@@ -91,7 +113,7 @@ void ChangeStaff() {
 
 		if (choose1 == "1")
 		{
-
+			AddEmployee();
 		}
 		if (choose1 == "2")
 		{
@@ -103,10 +125,12 @@ void ChangeStaff() {
 		}
 		if (choose1 == "0")
 		{
+			system("cls");
 			break;
 		}
 	}
 }
+
 void CreateStaticStorage()
 {
 	const int staticSize = 10;
@@ -128,6 +152,7 @@ void CreateStaticStorage()
 	FillStorage(countStaticArr, countArr, staticSize);
 	FillStorage(priceStaticArr, priceArr, staticSize);
 }
+
 bool isStringDigit(std::string string)
 {
 	for (int i = 0; i < string.size(); i++)
@@ -140,6 +165,7 @@ bool isStringDigit(std::string string)
 	}
 	return true;
 }
+
 void RemoveFromStorage()
 {
 	system("cls");
@@ -231,6 +257,7 @@ void RemoveFromStorage()
 
 	}
 }
+
 void ChangePrice()
 {
 	system("cls");
@@ -324,6 +351,7 @@ void ChangePrice()
 
 	}
 }
+
 void RefillStorage() {
 
 	system("cls");
@@ -416,6 +444,7 @@ void RefillStorage() {
 }
 
 }
+
 void ShopUserMenu()
 {
 	std::string choose;
@@ -466,6 +495,7 @@ void ShopUserMenu()
 		}
 	}
 }
+
 void ShopAdminMenu()
 {
 	std::string choose;
@@ -536,11 +566,12 @@ void ShopAdminMenu()
 	}
 }
 
-
 void start()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
+	SetConsoleCP(CP_UTF8);
+	//setlocale(LC_ALL, "ru");
 	std::cout << "\n\n\t\t\t Кругляш \n\n\n";
 	if (login() == true)
 	{
@@ -609,6 +640,7 @@ bool login()
 
 
 //register helper if i will use db
+/*
 std::pair <std::string, std::string> register_pass()
 {
 	std::string login_pass;
@@ -657,3 +689,4 @@ std::pair <std::string, std::string> register_pass()
 
 	return std::make_pair(login_pass, password_pass);
 }
+*/
