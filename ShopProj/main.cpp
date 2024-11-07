@@ -19,7 +19,7 @@ void RefillStorage();
 void CreateStaticStorage();
 void ShowStorage();
 template<typename ArrType> void FillStorage(ArrType staticArr[], ArrType dynamicArr[], int size);
-std::pair <std::string, std::string> logining_pass();
+// std::pair <std::string, std::string> logining_pass(); for a while, this function isn't needable
 void ShopAdminMenu();
 void ShopUserMenu();
 bool login();
@@ -100,6 +100,9 @@ void AddEmployee() {
 
 	delete[] tempLogin;
 	delete[] tempPass;
+	std::cout << "Пользователь был успешно добавлен!";
+	Sleep(3500);
+	system("cls");
 }
 
 void ChangeStaff() {
@@ -559,7 +562,9 @@ void ShopAdminMenu()
 			}
 			else
 			{
-				std::cerr << "UserMenuError";
+				std::cerr << "AdminMenuError";
+				Sleep(3000);
+				system("cls");
 				break;
 			}
 		} while (choose.size() > 1 || choose[0] < 48 || choose[0] > 56);
@@ -578,16 +583,31 @@ void start()
 		//std::cin.ignore(std::numeric_limits<std::streamsize>::max());
 		if (isAdmin == true)
 		{
-			
-			std::cout << "1 - Использовать готовый склад \n2 - Создать новый склад\n";
-			char key = _getch();
-			if (key == '1')
+			bool enter = false;
+			while(!enter)
 			{
-				CreateStaticStorage();
-			}
-			else if (key == '2')
-			{
-				// Динамический склад
+				std::cout << "1 - Использовать готовый склад \n2 - Создать новый склад\n";
+				char key = _getch();
+				if (key == '1')
+				{
+					CreateStaticStorage();
+					enter = true;
+				}
+				else if (key == '2')
+				{
+					// Динамический склад
+					std::cerr << "error type: 403";
+					Sleep(3000);
+					system("cls");
+					continue;
+				}
+				else
+				{
+					std::cerr << "Ошибка ввода";
+					Sleep(3000);
+					system("cls");
+					continue;
+				}
 			}
 
 			std::cout << "\n\n";
