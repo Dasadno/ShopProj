@@ -105,11 +105,69 @@ void AddEmployee() {
 	system("cls");
 }
 
+void StaffRedact() 
+{
+	std::string choose, newLogin, newPass;
+	int empId{};
+	while (true)
+	{
+		std::cout << "ID\t\tЛогин\t\tПароль";
+		for (size_t i = 0; i < userCount; i++)
+		{
+			std::cout << i + 1 << "\t" << std::left << std::setw(10) << loginArr << "\t" << passwordArr << "\n\n";
+		}
+
+		std::cout << "Введите ID сотрудника\t\t0 - Выход\n\nВвод: ";
+		std::getline(std::cin, choose, '\n');
+
+		if (choose == "0")
+		{
+			break;
+		}
+		else if (isStringDigit(choose))
+		{
+			empId = std::stoi(choose);
+			for (int i = 0; i < userCount; i++)
+			{
+				if (i == empId - 1)
+				{
+
+					std::cout << "Введите новый логин сотрудника:  ";
+					std::getline(std::cin, newLogin, '\n');
+					std::cout << "Введите новый пароль сотрудника: ";
+					std::getline(std::cin, newPass, '\n');
+
+					loginArr[i] = newLogin;
+					passwordArr[i] = newPass;
+				}
+				else
+				{
+					std::cerr << "Нет сотрудника с таким ID\n\n";
+				}
+			}
+		}
+		else
+		{
+			std::cerr << "\n\nОшибка ввода!\n\n";
+			Sleep(3000);
+			system("cls");
+			continue;
+		}
+	}
+}
+
 void ChangeStaff() {
 	system("cls");
 	std::string choose1;
 
 	while (true) {
+
+		std::cout << "ID\t\tЛогин\t\tПароль";
+		for (size_t i = 0; i < userCount; i++)
+		{
+			std::cout << i + 1 << "\t" << std::left << std::setw(10) << loginArr << "\t" << passwordArr << "\n\n";
+		}
+
 		std::cout << "1 - Добавить нового сотрудника\n2 - Отредактировать учетную запись сотрудника\n"
 			"3 - Удалить сотрудника\n0 - Выход\n\nВвод: ";
 		std::getline(std::cin, choose1, '\n');
@@ -120,7 +178,7 @@ void ChangeStaff() {
 		}
 		if (choose1 == "2")
 		{
-
+			StaffRedact();
 		}
 		if (choose1 == "3")
 		{
@@ -625,7 +683,7 @@ void start()
 bool login()
 {
 	std::string login, pass;
-	std::cout << "Введите логин: ";
+	std::cout << "Введите логин:  ";
 	std::getline(std::cin, login, '\n');
 	std::cout << "Введите пароль: ";
 	std::getline(std::cin, pass, '\n');
