@@ -11,6 +11,7 @@
 #endif
 
 //functios define
+void RemoveEmployee();
 void AddEmployee();
 void ChangeStaff();
 void RemoveFromStorage();
@@ -111,13 +112,13 @@ void StaffRedact()
 	int empId{};
 	while (true)
 	{
-		std::cout << "ID\t\tЛогин\t\tПароль";
+		std::cout << "ID\tЛогин\tПароль";
 		for (size_t i = 0; i < userCount; i++)
 		{
 			std::cout << i + 1 << "\t" << std::left << std::setw(10) << loginArr << "\t" << passwordArr << "\n\n";
 		}
 
-		std::cout << "Введите ID сотрудника\t\t0 - Выход\n\nВвод: ";
+		std::cout << "Введите ID сотрудника\t0 - Выход\n\nВвод: ";
 		std::getline(std::cin, choose, '\n');
 
 		if (choose == "0")
@@ -143,6 +144,9 @@ void StaffRedact()
 				else
 				{
 					std::cerr << "Нет сотрудника с таким ID\n\n";
+					Sleep(3000);
+					system("cls");
+					continue;
 				}
 			}
 		}
@@ -154,6 +158,70 @@ void StaffRedact()
 			continue;
 		}
 	}
+}
+
+void RemoveEmployee() 
+{
+	int empId{};
+	std::string chooseId;
+
+	while (true)
+	{
+		std::cout << "Введите ID сотрудника для удаления: ";
+		std::getline(std::cin, chooseId, '\n');
+		if (chooseId == "0")
+		{
+			break;
+		}
+		else if (isStringDigit(chooseId))
+		{
+			empId = std::stoi(chooseId);
+
+
+
+			break;
+		}
+		else
+		{
+			std::cerr << "\n\nОшибка ввода\n\n";
+		}
+
+		std::string* tempLogin = new std::string[userCount];
+		std::string* tempPass = new std::string[userCount];
+
+
+		for (int i = 0; i < userCount; i++)
+		{
+			tempLogin[i] = loginArr[i];
+			tempPass[i] = passwordArr[i];
+		}
+
+		delete[]loginArr;
+		delete[]passwordArr;
+		userCount--;
+		loginArr = new std::string[userCount];
+		passwordArr = new std::string[userCount];
+
+		for  (int i = 0, j = 0; i < userCount, j < userCount; j++, i++)
+		{
+			if (i == empId - 1)
+			{
+				i++;
+				loginArr[j] = tempLogin[j];
+				passwordArr[i] = tempPass[i];
+			}
+			else
+			{
+				loginArr[j] = tempLogin[i];
+				passwordArr[j] = tempPass[i];
+			}
+		}
+
+	}
+	
+	std::cout << "Пользователь был успешно удален!";
+	Sleep(3500);
+	system("cls");
 }
 
 void ChangeStaff() {
@@ -182,7 +250,7 @@ void ChangeStaff() {
 		}
 		if (choose1 == "3")
 		{
-
+			RemoveEmployee();
 		}
 		if (choose1 == "0")
 		{
