@@ -625,6 +625,10 @@ void ShopUserMenu()
 	}
 }
 
+void StorageRedact() {
+
+}
+
 void ShopAdminMenu()
 {
 	std::string choose;
