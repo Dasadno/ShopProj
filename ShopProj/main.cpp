@@ -656,7 +656,7 @@ void ShopAdminMenu()
 			}
 			else if (choose == "1")
 			{
-			
+				// here fucking pizdec
 			}
 			else if (choose == "2")
 			{
@@ -835,4 +835,4 @@ std::pair <std::string, std::string> register_pass()
 
 	return std::make_pair(login_pass, password_pass);
 }
-*/
+*/ 
