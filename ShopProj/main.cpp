@@ -1,10 +1,16 @@
 #include <iostream>
-#include <Windows.h>
 #include <string>
 #include <limits>
 #include <conio.h>
 #include <iomanip>
+#include <cmath>
+#include <thread>
+#include <Windows.h>
+#include <clocale>
+#include <chrono>
 
+
+using namespace std::chrono_literals;
 
 #if defined(max)
 #undef max
@@ -41,7 +47,13 @@ std::string* loginArr = new std::string[userCount]{ "admin", "user" };
 std::string* passwordArr = new std::string[userCount]{ "admin", "user" };
 
 int main() {
-	
+	const auto start_thread = std::chrono::high_resolution_clock::now();
+
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	//setlocale(1251, "ru");
+	//setlocale(65001, "ru");
+	//setlocale(LC_ALL, "ru");
 
 	start();
 
@@ -52,6 +64,7 @@ int main() {
 	delete[] loginArr;
 	delete[] passwordArr;
 
+	const auto end = std::chrono::high_resolution_clock::now();
 	return 0;
 }
 //functions -------------------------------------------
@@ -102,7 +115,7 @@ void AddEmployee() {
 	delete[] tempLogin;
 	delete[] tempPass;
 	std::cout << "Пользователь был успешно добавлен!";
-	Sleep(3500);
+	std::this_thread::sleep_for(3500ms);
 	system("cls");
 }
 
@@ -144,7 +157,7 @@ void StaffRedact()
 				else
 				{
 					std::cerr << "Нет сотрудника с таким ID\n\n";
-					Sleep(3000);
+					std::this_thread::sleep_for(3000ms);
 					system("cls");
 					continue;
 				}
@@ -153,7 +166,7 @@ void StaffRedact()
 		else
 		{
 			std::cerr << "\n\nОшибка ввода!\n\n";
-			Sleep(3000);
+			std::this_thread::sleep_for(3000ms);
 			system("cls");
 			continue;
 		}
@@ -220,7 +233,7 @@ void RemoveEmployee()
 	}
 	
 	std::cout << "Пользователь был успешно удален!";
-	Sleep(3500);
+	std::this_thread::sleep_for(3000ms);
 	system("cls");
 }
 
@@ -394,7 +407,7 @@ void ChangePrice()
 	std::cout << "\n\n\n";
 	std::string idStr, changeStr, choose;
 	int id{};
-	double change;
+	double change{};
 	bool exit = false;
 
 	while (!exit)
@@ -693,7 +706,7 @@ void ShopAdminMenu()
 			else
 			{
 				std::cerr << "AdminMenuError";
-				Sleep(3000);
+				std::this_thread::sleep_for(3000ms);
 				system("cls");
 				break;
 			}
@@ -703,9 +716,8 @@ void ShopAdminMenu()
 
 void start()
 {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-	SetConsoleCP(CP_UTF8);
+	//setlocale(1251, "ru");
+	//setlocale(65001, "ru");
 	//setlocale(LC_ALL, "ru");
 	std::cout << "\n\n\t\t\t Кругляш \n\n\n";
 	if (login() == true)
@@ -727,14 +739,14 @@ void start()
 				{
 					// Динамический склад
 					std::cerr << "error type: 403";
-					Sleep(3000);
+					std::this_thread::sleep_for(3000ms);
 					system("cls");
 					continue;
 				}
 				else
 				{
 					std::cerr << "Ошибка ввода";
-					Sleep(3000);
+					std::this_thread::sleep_for(3000ms);
 					system("cls");
 					continue;
 				}
@@ -782,6 +794,11 @@ bool login()
 			std::cout << "Добро пожаловать " << loginArr[i] << '\n';
 			isAdmin = false;
 			return true;
+		}
+		else
+		{
+			std::cerr << "Error 403";
+			return false;
 		}
 	}
 	system("cls");
