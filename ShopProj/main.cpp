@@ -47,6 +47,7 @@ std::string* loginArr = new std::string[userCount]{ "admin", "user" };
 std::string* passwordArr = new std::string[userCount]{ "admin", "user" };
 
 int main() {
+	std::thread main();
 	const auto start_thread = std::chrono::high_resolution_clock::now();
 
 	SetConsoleCP(1251);
