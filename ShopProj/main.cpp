@@ -77,12 +77,12 @@ void ShowStorage()
 	for (int i = 0; i < typesize; i++)
 	{
 		std::cout << idArr[i] << '\t' << std::left << std::setw(30) << nameArr[i] << "\t" << countArr[i] << "\t" << priceArr[i] << "\n";
-		
+
 	}
 
 }
 
-void StartSells() 
+void StartSells()
 {
 
 }
@@ -120,7 +120,7 @@ void AddEmployee() {
 	system("cls");
 }
 
-void StaffRedact() 
+void StaffRedact()
 {
 	std::string choose, newLogin, newPass;
 	int empId{};
@@ -174,7 +174,7 @@ void StaffRedact()
 	}
 }
 
-void RemoveEmployee() 
+void RemoveEmployee()
 {
 	int empId{};
 	std::string chooseId;
@@ -216,7 +216,7 @@ void RemoveEmployee()
 		loginArr = new std::string[userCount];
 		passwordArr = new std::string[userCount];
 
-		for  (int i = 0, j = 0; i < userCount, j < userCount; j++, i++)
+		for (int i = 0, j = 0; i < userCount, j < userCount; j++, i++)
 		{
 			if (i == empId - 1)
 			{
@@ -232,7 +232,7 @@ void RemoveEmployee()
 		}
 
 	}
-	
+
 	std::cout << "Пользователь был успешно удален!";
 	std::this_thread::sleep_for(3000ms);
 	system("cls");
@@ -466,7 +466,7 @@ void ChangePrice()
 		while (true)
 		{
 
-			std::cout << "Назначить товару " <<  nameArr[id - 1] << " новую цену" << "?\n";
+			std::cout << "Назначить товару " << nameArr[id - 1] << " новую цену" << "?\n";
 			std::cout << "1 - Да\t\t2 - Нет\t\t3 - Отмена\n\n";
 			std::getline(std::cin, choose, '\n');
 
@@ -536,12 +536,12 @@ void RefillStorage() {
 				std::cout << "Ошибка ввода";
 			}
 		}
-		std::cout << "\n\n" << idArr[id - 1] << "\t" << nameArr[id - 1] <<"\t" << countArr[id - 1] << "\n\n";
+		std::cout << "\n\n" << idArr[id - 1] << "\t" << nameArr[id - 1] << "\t" << countArr[id - 1] << "\n\n";
 
-	while (true)
-	{
-		std::cout << "Введите кол-во товаров на пополнение: ";
-		std::getline(std::cin, addStr, '\n');
+		while (true)
+		{
+			std::cout << "Введите кол-во товаров на пополнение: ";
+			std::getline(std::cin, addStr, '\n');
 			if (isStringDigit(addStr))
 			{
 				add = std::stoi(addStr);
@@ -554,37 +554,37 @@ void RefillStorage() {
 			{
 				std::cout << "Ошибка ввода";
 			}
+		}
+		while (true)
+		{
+
+			std::cout << "Добавить " << add << " товара(ов)" << nameArr[id - 1] << "?\n";
+			std::cout << "1 - Да\t\t2 - Нет\t\t3 - Отмена\n\n";
+			std::getline(std::cin, choose, '\n');
+
+			if (choose == "1")
+			{
+				countArr[id - 1] += add;
+				std::cout << "Товар успешно пополнен\n\n";
+				exit = true;
+				break;
+			}
+			if (choose == "2")
+			{
+				break;
+			}
+			if (choose == "3")
+			{
+				exit = true;
+				break;
+			}
+			else
+			{
+				std::cerr << "Ошибка ввода";
+			}
+		}
+
 	}
-	while(true)
-	{
-
-		std::cout << "Добавить " << add << " товара(ов)" << nameArr[id - 1] << "?\n";
-		std::cout << "1 - Да\t\t2 - Нет\t\t3 - Отмена\n\n";
-		std::getline(std::cin, choose, '\n');
-
-		if (choose == "1")
-		{
-			countArr[id - 1] += add;
-			std::cout << "Товар успешно пополнен\n\n";
-			exit = true;
-			break;
-		}
-		if (choose == "2")
-		{
-			break;
-		}
-		if (choose == "3")
-		{
-			exit = true;
-			break;
-		}
-		else
-		{
-			std::cerr << "Ошибка ввода";
-		}
-	}
-
-}
 
 }
 
@@ -626,7 +626,7 @@ void ShopUserMenu()
 		}
 		else if (choose == "4")
 		{
-			
+
 		}
 		else if (choose == "5")
 		{
@@ -727,7 +727,7 @@ void start()
 		if (isAdmin == true)
 		{
 			bool enter = false;
-			while(!enter)
+			while (!enter)
 			{
 				std::cout << "1 - Использовать готовый склад \n2 - Создать новый склад\n";
 				char key = _getch();
@@ -857,4 +857,4 @@ std::pair <std::string, std::string> register_pass()
 
 	return std::make_pair(login_pass, password_pass);
 }
-*/ 
+*/
