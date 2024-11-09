@@ -50,8 +50,7 @@ int main() {
 	std::thread main(int);
 	const auto start_thread = std::chrono::high_resolution_clock::now();
 
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+
 	//setlocale(1251, "ru");
 	//setlocale(65001, "ru");
 	//setlocale(LC_ALL, "ru");
