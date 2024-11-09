@@ -49,11 +49,9 @@ std::string* passwordArr = new std::string[userCount]{ "admin", "user" };
 int main() {
 	std::thread main(int);
 	const auto start_thread = std::chrono::high_resolution_clock::now();
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 
-
-	//setlocale(1251, "ru");
-	//setlocale(65001, "ru");
-	//setlocale(LC_ALL, "ru");
 
 	start();
 
@@ -72,7 +70,7 @@ int main() {
 void ShowStorage()
 {
 	system("cls");
-	std::cout << "ID\tÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ\t\t\tÐšÐ¾Ð»-Ð²Ð¾\tÐ¦ÐµÐ½Ð°\n";
+	std::cout << "ID\tÍàçâàíèå\t\t\tÊîë-âî\tÖåíà\n";
 	for (int i = 0; i < typesize; i++)
 	{
 		std::cout << idArr[i] << '\t' << std::left << std::setw(30) << nameArr[i] << "\t" << countArr[i] << "\t" << priceArr[i] << "\n";
@@ -101,9 +99,9 @@ void AddEmployee() {
 
 	std::string newLogin, newPass;
 
-	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð»Ð¾Ð³Ð¸Ð½ Ð½Ð¾Ð²Ð¾Ð³Ð¾ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°: ";
+	std::cout << "Ââåäèòå ëîãèí íîâîãî ñîòðóäíèêà: ";
 	std::getline(std::cin, newLogin, '\n');
-	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð½Ð¾Ð²Ð¾Ð³Ð¾ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°: ";
+	std::cout << "Ââåäèòå ïàðîëü íîâîãî ñîòðóäíèêà: ";
 	std::getline(std::cin, newPass, '\n');
 
 	tempLogin[userCount - 1] = newLogin;
@@ -114,7 +112,7 @@ void AddEmployee() {
 
 	delete[] tempLogin;
 	delete[] tempPass;
-	std::cout << "ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð±Ñ‹Ð» ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð´Ð¾Ð±Ð°Ð²Ð»ÐµÐ½!";
+	std::cout << "Ïîëüçîâàòåëü áûë óñïåøíî äîáàâëåí!";
 	std::this_thread::sleep_for(3500ms);
 	system("cls");
 }
@@ -125,13 +123,13 @@ void StaffRedact()
 	int empId{};
 	while (true)
 	{
-		std::cout << "ID\tÐ›Ð¾Ð³Ð¸Ð½\tÐŸÐ°Ñ€Ð¾Ð»ÑŒ";
+		std::cout << "ID\tËîãèí\tÏàðîëü";
 		for (size_t i = 0; i < userCount; i++)
 		{
 			std::cout << i + 1 << "\t" << std::left << std::setw(10) << loginArr << "\t" << passwordArr << "\n\n";
 		}
 
-		std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ID ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°\t0 - Ð’Ñ‹Ñ…Ð¾Ð´\n\nÐ’Ð²Ð¾Ð´: ";
+		std::cout << "Ââåäèòå ID ñîòðóäíèêà\t0 - Âûõîä\n\nÂâîä: ";
 		std::getline(std::cin, choose, '\n');
 
 		if (choose == "0")
@@ -146,9 +144,9 @@ void StaffRedact()
 				if (i == empId - 1)
 				{
 
-					std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð²Ñ‹Ð¹ Ð»Ð¾Ð³Ð¸Ð½ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°:  ";
+					std::cout << "Ââåäèòå íîâûé ëîãèí ñîòðóäíèêà:  ";
 					std::getline(std::cin, newLogin, '\n');
-					std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð²Ñ‹Ð¹ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°: ";
+					std::cout << "Ââåäèòå íîâûé ïàðîëü ñîòðóäíèêà: ";
 					std::getline(std::cin, newPass, '\n');
 
 					loginArr[i] = newLogin;
@@ -156,7 +154,7 @@ void StaffRedact()
 				}
 				else
 				{
-					std::cerr << "ÐÐµÑ‚ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ° Ñ Ñ‚Ð°ÐºÐ¸Ð¼ ID\n\n";
+					std::cerr << "Íåò ñîòðóäíèêà ñ òàêèì ID\n\n";
 					std::this_thread::sleep_for(3000ms);
 					system("cls");
 					continue;
@@ -165,7 +163,7 @@ void StaffRedact()
 		}
 		else
 		{
-			std::cerr << "\n\nÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°!\n\n";
+			std::cerr << "\n\nÎøèáêà ââîäà!\n\n";
 			std::this_thread::sleep_for(3000ms);
 			system("cls");
 			continue;
@@ -180,7 +178,7 @@ void RemoveEmployee()
 
 	while (true)
 	{
-		std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ID ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ° Ð´Ð»Ñ ÑƒÐ´Ð°Ð»ÐµÐ½Ð¸Ñ: ";
+		std::cout << "Ââåäèòå ID ñîòðóäíèêà äëÿ óäàëåíèÿ: ";
 		std::getline(std::cin, chooseId, '\n');
 		if (chooseId == "0")
 		{
@@ -196,7 +194,7 @@ void RemoveEmployee()
 		}
 		else
 		{
-			std::cerr << "\n\nÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°\n\n";
+			std::cerr << "\n\nÎøèáêà ââîäà\n\n";
 		}
 
 		std::string* tempLogin = new std::string[userCount];
@@ -232,7 +230,7 @@ void RemoveEmployee()
 
 	}
 
-	std::cout << "ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒ Ð±Ñ‹Ð» ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ ÑƒÐ´Ð°Ð»ÐµÐ½!";
+	std::cout << "Ïîëüçîâàòåëü áûë óñïåøíî óäàëåí!";
 	std::this_thread::sleep_for(3000ms);
 	system("cls");
 }
@@ -243,14 +241,14 @@ void ChangeStaff() {
 
 	while (true) {
 
-		std::cout << "ID\t\tÐ›Ð¾Ð³Ð¸Ð½\t\tÐŸÐ°Ñ€Ð¾Ð»ÑŒ";
+		std::cout << "ID\t\tËîãèí\t\tÏàðîëü";
 		for (size_t i = 0; i < userCount; i++)
 		{
 			std::cout << i + 1 << "\t" << std::left << std::setw(10) << loginArr << "\t" << passwordArr << "\n\n";
 		}
 
-		std::cout << "1 - Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð½Ð¾Ð²Ð¾Ð³Ð¾ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°\n2 - ÐžÑ‚Ñ€ÐµÐ´Ð°ÐºÑ‚Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ ÑƒÑ‡ÐµÑ‚Ð½ÑƒÑŽ Ð·Ð°Ð¿Ð¸ÑÑŒ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°\n"
-			"3 - Ð£Ð´Ð°Ð»Ð¸Ñ‚ÑŒ ÑÐ¾Ñ‚Ñ€ÑƒÐ´Ð½Ð¸ÐºÐ°\n0 - Ð’Ñ‹Ñ…Ð¾Ð´\n\nÐ’Ð²Ð¾Ð´: ";
+		std::cout << "1 - Äîáàâèòü íîâîãî ñîòðóäíèêà\n2 - Îòðåäàêòèðîâàòü ó÷åòíóþ çàïèñü ñîòðóäíèêà\n"
+			"3 - Óäàëèòü ñîòðóäíèêà\n0 - Âûõîä\n\nÂâîä: ";
 		std::getline(std::cin, choose1, '\n');
 
 		if (choose1 == "1")
@@ -280,10 +278,10 @@ void CreateStaticStorage()
 	int idStaticArr[staticSize]{ 1,2,3,4,5,6,7,8,9,10 };
 	std::string nameStaticArr[staticSize]
 	{
-		"ÐÑ€Ð±ÑƒÐ· Ð“Ð°Ð²Ð°Ð¸", "ÐÑ€Ð±ÑƒÐ· Ð¶ÐµÐ»Ñ‚Ñ‹Ð¹, Ð±ÐµÐ· ÑÐµÐ¼ÐµÑ‡ÐµÐº",
-		"ÐÑ€Ð±ÑƒÐ· ÐÐ±Ñ…Ð°Ð·ÑÐºÐ¸Ð¹", "ÐÑ€Ð±ÑƒÐ· Ð’Ð¾Ð»Ð³Ð¾Ð³Ñ€Ð°Ð´ÑÐºÐ¸Ð¹",
-		"ÐÑ€Ð±ÑƒÐ· ÐÐ·ÐµÑ€Ð±Ð°Ð¹Ð´Ð¶Ð°Ð½ÑÐºÐ¸Ð¹", "ÐÑ€Ð±ÑƒÐ· ÐÑ…Ð¼Ð°Ð´", "ÐÑ€Ð±ÑƒÐ· Ð§ÐµÑ‡ÐµÐ½ÑÐºÐ¸Ð¹",
-		"Ð”Ñ‹Ð½Ñ ÐÐ·ÐµÑ€Ð±Ð°Ð¹Ð´Ð¶Ð°Ð½ÑÐºÐ°Ñ", "Ð”Ñ‹Ð½Ñ Ð§ÐµÑ‡ÐµÐ½ÑÐºÐ°Ñ", "Ð”Ñ‹Ð½Ñ Ð¨Ð¸ÑˆÐºÐ°"
+		"Àðáóç Ãàâàè", "Àðáóç æåëòûé, áåç ñåìå÷åê",
+		"Àðáóç Àáõàçñêèé", "Àðáóç Âîëãîãðàäñêèé",
+		"Àðáóç Àçåðáàéäæàíñêèé", "Àðáóç Àõìàä", "Àðáóç ×å÷åíñêèé",
+		"Äûíÿ Àçåðáàéäæàíñêàÿ", "Äûíÿ ×å÷åíñêàÿ", "Äûíÿ Øèøêà"
 	};
 
 	int countStaticArr[staticSize]{ 12,8,6,11,7,15,8,9,7,8 };
@@ -321,7 +319,7 @@ void RemoveFromStorage()
 
 		while (true)
 		{
-			std::cout << "CÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ ÑÐ¾ ÑÐºÐ»Ð°Ð´Ð° ÑÐºÐ»Ð°Ð´Ð° \nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ id Ñ‚Ð¾Ð²Ð°Ñ€Ð°: ";
+			std::cout << "Cïèñàíèå ñî ñêëàäà ñêëàäà \nÂâåäèòå id òîâàðà: ";
 			std::getline(std::cin, idStr, '\n');
 
 			if (std::isdigit(idStr[0]) && idStr.size() == 1)
@@ -336,7 +334,7 @@ void RemoveFromStorage()
 			}
 			else
 			{
-				std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°";
+				std::cout << "Îøèáêà ââîäà";
 
 			}
 			if (id > 0 && id <= typesize)
@@ -346,14 +344,14 @@ void RemoveFromStorage()
 			}
 			else
 			{
-				std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°";
+				std::cout << "Îøèáêà ââîäà";
 			}
 		}
-		std::cout << "\n\n" << idArr[id - 1] << " " << nameArr[id - 1] << "\n ÐšÐ¾Ð»-Ð²Ð¾ Ñ‚Ð¾Ð²Ð°Ñ€Ð°: " << countArr[id - 1] << "\n\n";
+		std::cout << "\n\n" << idArr[id - 1] << " " << nameArr[id - 1] << "\n Êîë-âî òîâàðà: " << countArr[id - 1] << "\n\n";
 
 		while (true)
 		{
-			std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»-Ð²Ð¾ Ñ‚Ð¾Ð²Ð°Ñ€Ð¾Ð² Ð½Ð° ÑÐ¿Ð¸ÑÐ°Ð½Ð¸Ðµ ÑÐ¾ ÑÐºÐ»Ð°Ð´Ð°: ";
+			std::cout << "Ââåäèòå êîë-âî òîâàðîâ íà ñïèñàíèå ñî ñêëàäà: ";
 			std::getline(std::cin, removeStr, '\n');
 			if (isStringDigit(removeStr))
 			{
@@ -365,20 +363,20 @@ void RemoveFromStorage()
 			}
 			else
 			{
-				std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°";
+				std::cout << "Îøèáêà ââîäà";
 			}
 		}
 		while (true)
 		{
 
-			std::cout << "Ð¡Ð¿Ð¸ÑÐ°Ñ‚ÑŒ? " << remove << " Ñ‚Ð¾Ð²Ð°Ñ€Ð°(Ð¾Ð²)" << nameArr[id - 1] << "?\n";
-			std::cout << "1 - Ð”Ð°\t\t2 - ÐÐµÑ‚\t\t3 - ÐžÑ‚Ð¼ÐµÐ½Ð°\n\n";
+			std::cout << "Ñïèñàòü? " << remove << " òîâàðà(îâ)" << nameArr[id - 1] << "?\n";
+			std::cout << "1 - Äà\t\t2 - Íåò\t\t3 - Îòìåíà\n\n";
 			std::getline(std::cin, choose, '\n');
 
 			if (choose == "1")
 			{
 				countArr[id - 1] -= remove;
-				std::cout << "Ð¢Ð¾Ð²Ð°Ñ€ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ ÑÐ¿Ð¸ÑÐ°Ð½\n\n";
+				std::cout << "Òîâàð óñïåøíî ñïèñàí\n\n";
 				exit = true;
 				break;
 			}
@@ -393,7 +391,7 @@ void RemoveFromStorage()
 			}
 			else
 			{
-				std::cerr << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°";
+				std::cerr << "Îøèáêà ââîäà";
 			}
 		}
 
@@ -415,7 +413,7 @@ void ChangePrice()
 
 		while (true)
 		{
-			std::cout << "Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ Ñ†ÐµÐ½Ñ‹ Ñ‚Ð¾Ð²Ð°Ñ€Ð°\nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ id Ñ‚Ð¾Ð²Ð°Ñ€Ð°: ";
+			std::cout << "Èçìåíåíèå öåíû òîâàðà\nÂâåäèòå id òîâàðà: ";
 			std::getline(std::cin, idStr, '\n');
 
 			if (std::isdigit(idStr[0]) && idStr.size() == 1)
@@ -430,7 +428,7 @@ void ChangePrice()
 			}
 			else
 			{
-				std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°";
+				std::cout << "Îøèáêà ââîäà";
 
 			}
 			if (id > 0 && id <= typesize)
@@ -440,14 +438,14 @@ void ChangePrice()
 			}
 			else
 			{
-				std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°";
+				std::cout << "Îøèáêà ââîäà";
 			}
 		}
-		std::cout << "\n\n" << idArr[id - 1] << " " << nameArr[id - 1] << "\n Ð¦ÐµÐ½Ð° Ñ‚Ð¾Ð²Ð°Ñ€Ð°: " << priceArr[id - 1] << "\n\n";
+		std::cout << "\n\n" << idArr[id - 1] << " " << nameArr[id - 1] << "\n Öåíà òîâàðà: " << priceArr[id - 1] << "\n\n";
 
 		while (true)
 		{
-			std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð¾Ð²ÑƒÑŽ Ñ†ÐµÐ½Ñƒ Ð°Ñ€Ð±ÑƒÐ·Ð° Ð·Ð° ÐºÐ³: ";
+			std::cout << "Ââåäèòå íîâóþ öåíó àðáóçà çà êã: ";
 			std::getline(std::cin, changeStr, '\n');
 			if (isStringDigit(changeStr))
 			{
@@ -459,20 +457,20 @@ void ChangePrice()
 			}
 			else
 			{
-				std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°";
+				std::cout << "Îøèáêà ââîäà";
 			}
 		}
 		while (true)
 		{
 
-			std::cout << "ÐÐ°Ð·Ð½Ð°Ñ‡Ð¸Ñ‚ÑŒ Ñ‚Ð¾Ð²Ð°Ñ€Ñƒ " << nameArr[id - 1] << " Ð½Ð¾Ð²ÑƒÑŽ Ñ†ÐµÐ½Ñƒ" << "?\n";
-			std::cout << "1 - Ð”Ð°\t\t2 - ÐÐµÑ‚\t\t3 - ÐžÑ‚Ð¼ÐµÐ½Ð°\n\n";
+			std::cout << "Íàçíà÷èòü òîâàðó " << nameArr[id - 1] << " íîâóþ öåíó" << "?\n";
+			std::cout << "1 - Äà\t\t2 - Íåò\t\t3 - Îòìåíà\n\n";
 			std::getline(std::cin, choose, '\n');
 
 			if (choose == "1")
 			{
 				priceArr[id - 1] = (change + 0.9);
-				std::cout << "Ð¦ÐµÐ½Ð° ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ ÑƒÑÑ‚Ð°Ð½Ð¾Ð²Ð»ÐµÐ½Ð°\n\n";
+				std::cout << "Öåíà óñïåøíî óñòàíîâëåíà\n\n";
 				exit = true;
 				break;
 			}
@@ -487,7 +485,7 @@ void ChangePrice()
 			}
 			else
 			{
-				std::cerr << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°";
+				std::cerr << "Îøèáêà ââîäà";
 			}
 		}
 
@@ -507,7 +505,7 @@ void RefillStorage() {
 
 		while (true)
 		{
-			std::cout << "ÐŸÐ¾Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ ÑÐºÐ»Ð°Ð´Ð° \nÐ’Ð²ÐµÐ´Ð¸Ñ‚Ðµ id Ñ‚Ð¾Ð²Ð°Ñ€Ð°: ";
+			std::cout << "Ïîïîëíåíèå ñêëàäà \nÂâåäèòå id òîâàðà: ";
 			std::getline(std::cin, idStr, '\n');
 
 			if (std::isdigit(idStr[0]) && idStr.size() == 1)
@@ -522,7 +520,7 @@ void RefillStorage() {
 			}
 			else
 			{
-				std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°";
+				std::cout << "Îøèáêà ââîäà";
 
 			}
 			if (id > 0 && id <= typesize)
@@ -532,14 +530,14 @@ void RefillStorage() {
 			}
 			else
 			{
-				std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°";
+				std::cout << "Îøèáêà ââîäà";
 			}
 		}
 		std::cout << "\n\n" << idArr[id - 1] << "\t" << nameArr[id - 1] << "\t" << countArr[id - 1] << "\n\n";
 
 		while (true)
 		{
-			std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ¾Ð»-Ð²Ð¾ Ñ‚Ð¾Ð²Ð°Ñ€Ð¾Ð² Ð½Ð° Ð¿Ð¾Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ðµ: ";
+			std::cout << "Ââåäèòå êîë-âî òîâàðîâ íà ïîïîëíåíèå: ";
 			std::getline(std::cin, addStr, '\n');
 			if (isStringDigit(addStr))
 			{
@@ -551,20 +549,20 @@ void RefillStorage() {
 			}
 			else
 			{
-				std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°";
+				std::cout << "Îøèáêà ââîäà";
 			}
 		}
 		while (true)
 		{
 
-			std::cout << "Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ " << add << " Ñ‚Ð¾Ð²Ð°Ñ€Ð°(Ð¾Ð²)" << nameArr[id - 1] << "?\n";
-			std::cout << "1 - Ð”Ð°\t\t2 - ÐÐµÑ‚\t\t3 - ÐžÑ‚Ð¼ÐµÐ½Ð°\n\n";
+			std::cout << "Äîáàâèòü " << add << " òîâàðà(îâ)" << nameArr[id - 1] << "?\n";
+			std::cout << "1 - Äà\t\t2 - Íåò\t\t3 - Îòìåíà\n\n";
 			std::getline(std::cin, choose, '\n');
 
 			if (choose == "1")
 			{
 				countArr[id - 1] += add;
-				std::cout << "Ð¢Ð¾Ð²Ð°Ñ€ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ Ð¿Ð¾Ð¿Ð¾Ð»Ð½ÐµÐ½\n\n";
+				std::cout << "Òîâàð óñïåøíî ïîïîëíåí\n\n";
 				exit = true;
 				break;
 			}
@@ -579,7 +577,7 @@ void RefillStorage() {
 			}
 			else
 			{
-				std::cerr << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°";
+				std::cerr << "Îøèáêà ââîäà";
 			}
 		}
 
@@ -595,14 +593,14 @@ void ShopUserMenu()
 
 		do
 		{
-			std::cout << "1. ÐÐ°Ñ‡Ð°Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð´Ð°Ð¶Ñƒ \n";
-			std::cout << "2. ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÑÐºÐ»Ð°Ð´ \n";
-			std::cout << "3. Ð¡Ð¿Ð¸ÑÐ°Ñ‚ÑŒ ÑÐ¾ ÑÐºÐ»Ð°Ð´Ð°\n";
-			std::cout << "4. ÐžÑ‚Ñ‡ÐµÑ‚ Ð¾ Ð¿Ñ€Ð¸Ð±Ñ‹Ð»Ð¸\n";
-			std::cout << "5. ÐŸÐ¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ ÑÐºÐ»Ð°Ð´\n";
-			std::cout << "0. Ð—Ð°ÐºÑ€Ñ‹Ñ‚ÑŒ ÑÐ¼ÐµÐ½Ñƒ \n";
+			std::cout << "1. Íà÷àòü ïðîäàæó \n";
+			std::cout << "2. Ïîêàçàòü ñêëàä \n";
+			std::cout << "3. Ñïèñàòü ñî ñêëàäà\n";
+			std::cout << "4. Îò÷åò î ïðèáûëè\n";
+			std::cout << "5. Ïîïîëíèòü ñêëàä\n";
+			std::cout << "0. Çàêðûòü ñìåíó \n";
 
-			std::cout << "Ð’Ð²Ð¾Ð´: ";
+			std::cout << "Ââîä: ";
 			std::getline(std::cin, choose, '\n');
 			system("cls");
 
@@ -647,22 +645,22 @@ void ShopAdminMenu()
 	std::string choose;
 	while (true)
 	{
-		std::cout << "1. ÐÐ°Ñ‡Ð°Ñ‚ÑŒ Ð¿Ñ€Ð¾Ð´Ð°Ð¶Ñƒ \n";
-		std::cout << "2. ÐŸÐ¾ÐºÐ°Ð·Ð°Ñ‚ÑŒ ÑÐºÐ»Ð°Ð´ \n";
-		std::cout << "3. ÐŸÐ¾Ð¿Ð¾Ð»Ð½Ð¸Ñ‚ÑŒ ÑÐºÐ»Ð°Ð´ \n";
-		std::cout << "4. Ð¡Ð¿Ð¸ÑÐ°Ñ‚ÑŒ ÑÐ¾ ÑÐºÐ»Ð°Ð´Ð°\n";
-		std::cout << "5. Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ñ†ÐµÐ½Ñƒ \n";
-		std::cout << "6. Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ ÑÐºÐ»Ð°Ð´\n";
-		std::cout << "7. Ð˜Ð·Ð¼ÐµÐ½Ð¸Ñ‚ÑŒ Ð¿ÐµÑ€ÑÐ¾Ð½Ð°Ð»\n";
-		std::cout << "8. ÐžÑ‚Ñ‡ÐµÑ‚ Ð¾ Ð¿Ñ€Ð¸Ð±Ñ‹Ð»Ð¸\n";
-		std::cout << "0. Ð—Ð°ÐºÑ€Ñ‹Ñ‚ÑŒ ÑÐ¼ÐµÐ½Ñƒ \n";
+		std::cout << "1. Íà÷àòü ïðîäàæó \n";
+		std::cout << "2. Ïîêàçàòü ñêëàä \n";
+		std::cout << "3. Ïîïîëíèòü ñêëàä \n";
+		std::cout << "4. Ñïèñàòü ñî ñêëàäà\n";
+		std::cout << "5. Èçìåíèòü öåíó \n";
+		std::cout << "6. Èçìåíèòü ñêëàä\n";
+		std::cout << "7. Èçìåíèòü ïåðñîíàë\n";
+		std::cout << "8. Îò÷åò î ïðèáûëè\n";
+		std::cout << "0. Çàêðûòü ñìåíó \n";
 
 		std::string choose;
 
 
 		do
 		{
-			std::cout << "Ð’Ð²Ð¾Ð´: ";
+			std::cout << "Ââîä: ";
 			std::getline(std::cin, choose, '\n');
 
 
@@ -719,7 +717,7 @@ void start()
 	//setlocale(1251, "ru");
 	//setlocale(65001, "ru");
 	//setlocale(LC_ALL, "ru");
-	std::cout << "\n\n\t\t\t ÐšÑ€ÑƒÐ³Ð»ÑÑˆ \n\n\n";
+	std::cout << "\n\n\t\t\t Êðóãëÿø \n\n\n";
 	if (login() == true)
 	{
 		//std::cin.ignore(std::numeric_limits<std::streamsize>::max());
@@ -728,7 +726,7 @@ void start()
 			bool enter = false;
 			while (!enter)
 			{
-				std::cout << "1 - Ð˜ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒ Ð³Ð¾Ñ‚Ð¾Ð²Ñ‹Ð¹ ÑÐºÐ»Ð°Ð´ \n2 - Ð¡Ð¾Ð·Ð´Ð°Ñ‚ÑŒ Ð½Ð¾Ð²Ñ‹Ð¹ ÑÐºÐ»Ð°Ð´\n";
+				std::cout << "1 - Èñïîëüçîâàòü ãîòîâûé ñêëàä \n2 - Ñîçäàòü íîâûé ñêëàä\n";
 				char key = _getch();
 				if (key == '1')
 				{
@@ -737,7 +735,7 @@ void start()
 				}
 				else if (key == '2')
 				{
-					// Ð”Ð¸Ð½Ð°Ð¼Ð¸Ñ‡ÐµÑÐºÐ¸Ð¹ ÑÐºÐ»Ð°Ð´
+					// Äèíàìè÷åñêèé ñêëàä
 					std::cerr << "error type: 403";
 					std::this_thread::sleep_for(3000ms);
 					system("cls");
@@ -745,7 +743,7 @@ void start()
 				}
 				else
 				{
-					std::cerr << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°";
+					std::cerr << "Îøèáêà ââîäà";
 					std::this_thread::sleep_for(3000ms);
 					system("cls");
 					continue;
@@ -767,14 +765,14 @@ void start()
 bool login()
 {
 	std::string login, pass;
-	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð»Ð¾Ð³Ð¸Ð½:  ";
+	std::cout << "Ââåäèòå ëîãèí:  ";
 	std::getline(std::cin, login, '\n');
-	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ: ";
+	std::cout << "Ââåäèòå ïàðîëü: ";
 	std::getline(std::cin, pass, '\n');
 
 	if (login == loginArr[0] && pass == passwordArr[0])
 	{
-		std::cout << "Ð”Ð¾Ð±Ñ€Ð¾ Ð¿Ð¾Ð¶Ð°Ð»Ð¾Ð²Ð°Ñ‚ÑŒ " << loginArr[0] << '\n';
+		std::cout << "Äîáðî ïîæàëîâàòü " << loginArr[0] << '\n';
 		isAdmin = true;
 		return true;
 	}
@@ -785,13 +783,13 @@ bool login()
 	{
 		if (login == loginArr[0] && pass == passwordArr[0])
 		{
-			std::cout << "Ð”Ð¾Ð±Ñ€Ð¾ Ð¿Ð¾Ð¶Ð°Ð»Ð¾Ð²Ð°Ñ‚ÑŒ " << loginArr[0] << '\n'; // admin module
+			std::cout << "Äîáðî ïîæàëîâàòü " << loginArr[0] << '\n'; // admin module
 			isAdmin = true;
 			return true;
 		}
 		if (login == loginArr[i] && pass == passwordArr[i])
 		{
-			std::cout << "Ð”Ð¾Ð±Ñ€Ð¾ Ð¿Ð¾Ð¶Ð°Ð»Ð¾Ð²Ð°Ñ‚ÑŒ " << loginArr[i] << '\n';
+			std::cout << "Äîáðî ïîæàëîâàòü " << loginArr[i] << '\n';
 			isAdmin = false;
 			return true;
 		}
@@ -802,7 +800,7 @@ bool login()
 		}
 	}
 	system("cls");
-	std::cout << "Ð›Ð¾Ð³Ð¸Ð½ Ð¸Ð»Ð¸ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ Ð²Ð²ÐµÐ´ÐµÐ½Ñ‹ Ð½ÐµÐ¿Ñ€Ð°Ð²Ð¸Ð»ÑŒÐ½Ð¾";
+	std::cout << "Ëîãèí èëè ïàðîëü ââåäåíû íåïðàâèëüíî";
 }
 
 
@@ -812,7 +810,7 @@ std::pair <std::string, std::string> register_pass()
 {
 	std::string login_pass;
 	std::string password_pass;
-	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð»Ð¾Ð³Ð¸Ð½: ";
+	std::cout << "Ââåäèòå ëîãèí: ";
 	std::getline(std::cin, login_pass, '\n');
 	bool check1 = false;
 	bool check2 = false;
@@ -822,7 +820,7 @@ std::pair <std::string, std::string> register_pass()
 		check1 = false;
 		check2 = false;
 		check3 = false;
-		std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ: ";
+		std::cout << "Ââåäèòå ïàðîëü: ";
 		getline(std::cin, password_pass, '\n');
 		for (int i = 0; i < password_pass.length(); i++)
 		{
@@ -840,7 +838,7 @@ std::pair <std::string, std::string> register_pass()
 			}
 			else if (password_pass.length() < 8)
 			{
-				std::cout << "ÐŸÐ°Ñ€Ð¾Ð»ÑŒ Ð½Ðµ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð¼ÐµÐ½ÑŒÑˆÐµ 8 ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð².\n";
+				std::cout << "Ïàðîëü íå ìîæåò áûòü ìåíüøå 8 ñèìâîëîâ.\n";
 			}
 			if (check1 == true && check2 == true && check3 == true)
 			{
@@ -848,7 +846,7 @@ std::pair <std::string, std::string> register_pass()
 			}
 			else
 			{
-				std::cout << "Ð’ Ð¿Ð°Ñ€Ð¾Ð»Ðµ Ð´Ð¾Ð»Ð¶Ð½Ñ‹ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÑŒÑÑ Ð·Ð°Ð³Ð»Ð°Ð²Ð½Ñ‹Ðµ Ð±ÑƒÐºÐ²Ñ‹ Ð¸ Ñ†Ð¸Ñ„Ñ€Ñ‹.\n";
+				std::cout << "Â ïàðîëå äîëæíû èñïîëüçîâàòüñÿ çàãëàâíûå áóêâû è öèôðû.\n";
 			}
 
 		}
